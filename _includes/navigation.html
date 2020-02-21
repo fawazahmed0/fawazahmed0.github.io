@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <a class="navbar-brand" href="#">ServeOnline</a>
+  <ul class="navbar-nav">
+
+    {% for item in site.data.navigation %}
+      <li class="nav-item {% if page.url == item.link %}active{% endif %}" >
+      <a class="nav-link"  href="{{ item.link }}" >
+        {{ item.name }}
+      </a>
+      </li>
+    {% endfor %}
+
+  </ul>
+</nav>
