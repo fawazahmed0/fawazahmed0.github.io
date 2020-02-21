@@ -2,7 +2,8 @@
 <!-- Get this bootstrap template from : https://getbootstrap.com/docs/4.2/getting-started/introduction/ -->
 <html lang="en">
   <head>
-
+  <!-- Use analytics only if the environment is anything other than testing environment -->
+  {% if jekyll.environment != "testing" %}
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158869197-1"></script>
   <script>
@@ -11,7 +12,7 @@
     gtag('js', new Date());
     gtag('config', 'UA-158869197-1');
   </script>
-
+  {% endif %}
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
