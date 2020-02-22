@@ -1,5 +1,9 @@
 <!doctype html>
-<!-- Get this bootstrap template from : https://getbootstrap.com/docs/4.2/getting-started/introduction/ -->
+<!--
+Get this bootstrap template from : https://getbootstrap.com/docs/4.2/getting-started/introduction/
+Refer: https://jekyllrb.com/docs/step-by-step/04-layouts/  on how to make layout, this is configured as default layout for all the Pages
+in _config.yml, so we don't have to specify it at the top of page in front matters
+-->
 <html lang="en">
   <head>
   <!-- Use analytics only if the environment is anything other than testing environment -->
@@ -21,8 +25,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>{{ page.title }}</title>
-    <!-- The below line generates seo tags, this is done using jekyll seo tag plugin
-  Refer this on how to add it: https://jekyllrb.com/docs/step-by-step/10-deployment/   -->
+    <!--
+    The below line generates seo tags, this is done using jekyll seo tag plugin
+    Refer this on how to add it: https://jekyllrb.com/docs/step-by-step/10-deployment/
+    -->
     {% seo %}
   </head>
   <body>

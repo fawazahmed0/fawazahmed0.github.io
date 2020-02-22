@@ -36,7 +36,9 @@ plugins:
   - jekyll-seo-tag
 # - jekyll-feed
 
+# Setting front matter defaults for all pages
 # Default layout for all pages is default
+# Refer this for more details: https://jekyllrb.com/docs/step-by-step/09-collections/
 defaults:
   - scope:
       path: ""

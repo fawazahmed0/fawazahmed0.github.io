@@ -1,0 +1,44 @@
+This file stores details about site structure
+
+_data folder:
+Refer this https://jekyllrb.com/docs/step-by-step/06-data-files/    to see how to use _data folder
+_data folder is used to store data files
+Data files are a great way to separate content from source code to make the site easier to maintain
+we can keep here yaml, json, csv
+The data from the files is read by _includes/*.html/md file and maybe can also be read by other files, refer docs
+
+_includes folder:
+Refer this https://jekyllrb.com/docs/step-by-step/05-includes/
+_includes folder is a great way to seperate code that is used in multiple places
+we can use the file in includes folder by adding  {% include file.html %}   in other files-->
+
+_layouts folder:
+Refer: https://jekyllrb.com/docs/step-by-step/04-layouts/  on how to make layout,
+It has layouts in it, layouts help in making the template of page, and we can specify the layout at front matter i.e on top by writing
+---
+layout: layoutname
+---
+The default.html is configured as default layout for all the Pages in _config.yml, so we don't have to specify it at the top of page in front matters
+
+
+_posts folder:
+posts folder store blog post markdown/html and all the files in it are shown in the front page, this is used when you are using the site as blog
+
+_site:
+After running 'bundle exec jekyll serve' the create site data (generated static site) is placed in it.
+You can also upload the _site files and serve pages online and these files are enough to serve the site.
+
+_config.yml:
+This file store all the configuration related to jekyll, plugins to use, default layouts etc, after changing this file
+you will have to rerun bundle exec jekyll serve   to pick up the changes
+
+Gemfile and Gemfile.lock:
+These files stores the information related to the environment required (plugin versions, ruby version etc) to generate the static pages (or generate the site)
+You should use 'bundle exec jekyll server' to uses these files automatically to setup the environment for jekyll to generate
+
+CNAME:
+This stores the domain name of the file through which the site is accessible
+
+assets (currently doesn't exist in site structure):
+This folder is used to store css, js, images etc
+Refer this: https://jekyllrb.com/docs/step-by-step/07-assets/
