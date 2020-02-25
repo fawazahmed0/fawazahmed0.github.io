@@ -1,8 +1,0 @@
-# Refer this https://jekyllrb.com/docs/step-by-step/06-data-files/    to see how I made This
-# The data from this file is read by _includes/navigation.html file
-# Data files are a great way to separate content from source code to make the site easier to maintain
-# we can keep here yaml, json, csv
-- name: Home
-  link: /
-- name: About
-  link: /about.html

@@ -42,3 +42,7 @@ This stores the domain name of the file through which the site is accessible
 assets (currently doesn't exist in site structure):
 This folder is used to store css, js, images etc
 Refer this: https://jekyllrb.com/docs/step-by-step/07-assets/
+
+
+TODO:
+Add tools drop down to share free online tools on website, such as viewer etc

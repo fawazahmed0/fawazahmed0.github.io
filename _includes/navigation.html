@@ -4,17 +4,47 @@ _includes folder is a great way to seperate code that is used in multiple places
 we can use this file by adding 'include navigation.html'  in the file , add liquid tag (refer _layout/default.html for example)
 -->
 
+
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-  <a class="navbar-brand" href="#">ServeOnline</a>
+  <a class="navbar-brand" href="/">ServeOnline</a>
   <ul class="navbar-nav">
 
-    {% for item in site.data.navigation %}
-      <li class="nav-item {% if page.url == item.link %}active{% endif %}" >
-      <a class="nav-link"  href="{{ item.link }}" >
-        {{ item.name }}
+
+    <li class="nav-item">
+      <a class="nav-link" href="/">
+        Home
       </a>
-      </li>
-    {% endfor %}
+    </li>
+
+
+
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown">
+        Services
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/letters.html">Send Letters Online</a>
+        <a class="dropdown-item" href="#">Get Passport Photo</a>
+        <a class="dropdown-item" href="#">Get Photo Prints</a>
+        <a class="dropdown-item" href="#">File RTI (Indian Citizens)</a>
+      </div>
+    </li>
+
+    <li class="nav-item ">
+      <a class="nav-link" href="/about.html">
+        About
+      </a>
+    </li>
 
   </ul>
 </nav>
+<script>
+
+// Refer: https://stackoverflow.com/questions/15082316/how-to-set-active-class-to-nav-menu-from-twitter-bootstrap
+$(document).ready(function() {
+  $('a[href="' + this.location.pathname + '"]').parents('li,ul').addClass('active');
+});
+
+
+</script>
