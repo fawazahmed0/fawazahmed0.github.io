@@ -46,3 +46,6 @@ Refer this: https://jekyllrb.com/docs/step-by-step/07-assets/
 
 TODO:
 Add tools drop down to share free online tools on website, such as viewer etc
+
+Building site at local environment(windows):
+set "JEKYLL_ENV=testing" && bundle exec jekyll serve
