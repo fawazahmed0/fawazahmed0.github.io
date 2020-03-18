@@ -52,7 +52,7 @@ defaults:
 #
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
-#
+# Use this to exclude the file/folders from being built in _site folder
 exclude:
   - sitereadme
 #   - .sass-cache/
