@@ -1,47 +1,27 @@
 ---
 title: Stripe Donation
 ---
-<!-- Load Stripe.js on your website. -->
-<script src="https://js.stripe.com/v3"></script>
+<button class="btn btn-primary btn-lg" id="stripe-button">
+   Checkout <span class="glyphicon glyphicon-shopping-cart"></span>
+ </button>
 
-<!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
-<button
-  style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
-  id="checkout-button-sku_HAoLn01rwqoiJQ"
-  role="link"
->
-  Checkout
-</button>
+ <script>
+   $('#stripe-button').click(function(){
+     var token = function(res){
+       var $id = $('<input type=hidden name=stripeToken />').val(res.id);
+       var $email = $('<input type=hidden name=stripeEmail />').val(res.email);
+       $('form').append($id).append($email).submit();
+     };
 
-<div id="error-message"></div>
+     var amount = $("#stripeAmount").val();
+     StripeCheckout.open({
+       key:         'pk_test_stHQrxMgHUHFDUvGy66y7tUG00TF378X9W',
+       amount:      10,
+       name:        'Serendipity Artisan Blends',
+       panelLabel:  'Checkout',
+       token:       token
+     });
 
-<script>
-(function() {
-  var stripe = Stripe('pk_live_2iSPDOnC126d0dnNPfESsaTk007wld2uGp');
-
-  var checkoutButton = document.getElementById('checkout-button-sku_HAoLn01rwqoiJQ');
-  checkoutButton.addEventListener('click', function () {
-    // When the customer clicks on the button, redirect
-    // them to Checkout.
-    stripe.redirectToCheckout({
-      items: [{sku: 'sku_HAoLn01rwqoiJQ', quantity: 1}],
-
-      // Do not rely on the redirect to the successUrl for fulfilling
-      // purchases, customers may not always reach the success_url after
-      // a successful payment.
-      // Instead use one of the strategies described in
-      // https://stripe.com/docs/payments/checkout/fulfillment
-      successUrl: 'https://github.com/fawazahmed0/success',
-      cancelUrl: 'https://github.com/fawazahmed0/canceled',
-    })
-    .then(function (result) {
-      if (result.error) {
-        // If `redirectToCheckout` fails due to a browser or network
-        // error, display the localized error message to your customer.
-        var displayError = document.getElementById('error-message');
-        displayError.textContent = result.error.message;
-      }
-    });
-  });
-})();
-</script>
+     return false;
+   });
+ </script>
