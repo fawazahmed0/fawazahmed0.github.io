@@ -45,12 +45,12 @@ layout: simple
 </div>
  <div class="row">
    <div class="collapse" id="issue">
-  <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSd9agrjOEE0khzfeaBhdH18ADEm2-kvy6Mkv8aFSBpgtcHt8A/formResponse" method="post" target="hidden_iframe" class="form-group card card-body">
+  <form id="issueform" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSd9agrjOEE0khzfeaBhdH18ADEm2-kvy6Mkv8aFSBpgtcHt8A/formResponse" method="post" target="hidden_iframe" class="form-group card card-body">
 
 <textarea id="issuetext" type="text" placeholder="Let me know what issue you faced" name="entry.1071744889" rows=5></textarea>
 
 
-      <button id="issuesend" class="btn btn-primary float-right" type="submit">Send</button>
+      <button id="issuesend" class="btn btn-primary float-right" type="button" onclick="errorsend();">Send</button>
 </form>
 
    </div>
@@ -88,26 +88,22 @@ layout: simple
       </div>
 
 
-      <div class="container">
-        <div class="row bg-white">
-          <div class="col border-0">
-            <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#donatediv" role="button" aria-expanded="false" aria-controls="donatediv">
+
+
+            <a class="btn btn-primary btn-lg mx-3" data-toggle="collapse" href="#donatediv" role="button" aria-expanded="false" aria-controls="donatediv">
              &#10084; Dosante
             </a>
 
-          </div>
-          <div class="col border-0">
 
 
-            <a class="btn btn-primary btn-lg" data-toggle="collapse" href="#sharediv" role="button" aria-expanded="false" aria-controls="sharediv">
+
+            <a class="btn btn-primary btn-lg mx-3" data-toggle="collapse" href="#sharediv" role="button" aria-expanded="false" aria-controls="sharediv">
           &#10150; Share
             </a>
 
-          </div>
 
 
-        </div>
-      </div>
+
 
 
 
@@ -372,7 +368,8 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 <script>
 
 
-
+// Storing console information
+// https://stackoverflow.com/questions/19846078/how-to-read-from-chromes-console-in-javascript
 
   if (console.everything === undefined)
   {
@@ -398,8 +395,30 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
           console.everything.push({"type":"debug", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
           console.defaultDebug.apply(console, arguments);
       }
+      //
+      console.everything.push({"currenturl": window.location.href })
   }
 
+// JSON.stringify(console.everything)
+function errorsend(){
+
+  // When issue send is clicked, collapse and then show the toast message
+
+
+    $('#issue').collapse('hide')
+
+    $('#issuetoast').toast('show')
+
+   // After the collapse is hidden completely
+    $('#issue').one('hidden.bs.collapse', function () {
+      // Add console details to the message before submitting
+       $('#issuetext').val( $('#issuetext').val()+ "  " +JSON.stringify(console.everything))
+       // submit the form
+        $('#issueform').submit()
+})
+
+
+}
 
 
   // Code for stripe
@@ -527,13 +546,7 @@ new QRCode(document.getElementById("rippleqr"), $('#rippleaddress').text().trim(
  $(this).tooltip('hide')
 })
 
-// When issue send is clicked, collapse and then show the toast message
-$( "#issuesend" ).click(function() {
 
-  $('#issue').collapse('hide')
-
-  $('#issuetoast').toast('show')
-});
 
 // Empty the previous textarea value in issue when show event is fired
  $('#issue').on('show.bs.collapse', function () {
