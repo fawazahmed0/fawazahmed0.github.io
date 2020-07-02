@@ -19,7 +19,7 @@
                     </datalist>
   <input id="amt" type="number" min="0.01" step="0.01" class="form-control" placeholder="Enter Amount" required>
 
-<button id="mybtn" role="link">
+<button id="mybtn" role="link" onclick="test()">
   Checkout
 </button>
 
@@ -41,28 +41,37 @@ for(curr of allCurrency){
 }
 
 var oneTime, multiTime;
-fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/onetime.json')
-.then(response => response.json())
-.then(data => oneTime=data)
+fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/onetime.json').then(response => response.json()).then(data => oneTime=data).catch(console.error);
 
-fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/multitime.json')
-.then(response => response.json())
-.then(data => multiTime=data)
+fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/multitime.json').then(response => response.json()).then(data => multiTime=data).catch(console.error);
+
+var stripe = Stripe('pk_live_2iSPDOnC126d0dnNPfESsaTk007wld2uGp');
+
+var checkoutButton = document.getElementById('mybtn');
+// checkoutButton.addEventListener('click', test());
 
 
 
 
-(function() {
-  var stripe = Stripe('pk_live_2iSPDOnC126d0dnNPfESsaTk007wld2uGp');
 
-  var checkoutButton = document.getElementById('mybtn');
-  checkoutButton.addEventListener('click', function () {
 
-var curr = $('#currency').val().trim().toLowerCase()
+
+// To get currency from datalist
+$('#currency').val()
+// To get radio value
+$('input[name="occurences"]:checked').val();
+// To get Amount
+$('#amt').val()
+
+
+function test(){
+
+
+  var curr = $('#currency').val().trim().toLowerCase()
   var mode = $('input[name="occurences"]:checked').val().trim();
-var amount = $('#amt').val().trim();
-var jsonlist = oneTime
-if(mode.equals('subscription'))
+  var amount = $('#amt').val().trim();
+  var jsonlist = oneTime
+  if(mode == 'subscription')
    jsonlist = multiTime
 
     // When the customer clicks on the button, redirect
@@ -87,21 +96,10 @@ if(mode.equals('subscription'))
         displayError.textContent = result.error.message;
       }
     });
-  });
-})();
 
 
 
-
-// To get currency from datalist
-$('#currency').val()
-// To get radio value
-$('input[name="occurences"]:checked').val();
-// To get Amount
-$('#amt').val()
-
-
-
+}
 
 
 // oneTime
