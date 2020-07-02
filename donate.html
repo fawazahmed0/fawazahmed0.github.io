@@ -30,20 +30,20 @@ layout: simple
 
   <div class="row">
 
-    <div class="col border-0 bg-light m-3">
+    <div class="col border-0 m-3">
 
 
-   <h5 class="row" id="mymsg">
+   <h5 class="row bg-light" id="mymsg">
 
    </h5>
-   <div class="row bg-light">
+   <div class="row">
 
 
     <a class="btn btn-link" id="issuebtn" data-toggle="collapse" href="#issue" role="button" aria-expanded="false" aria-controls="issue">
      Facing any issue? Let me know
    </a>
-
-
+</div>
+ <div class="row">
    <div class="collapse" id="issue">
   <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSd9agrjOEE0khzfeaBhdH18ADEm2-kvy6Mkv8aFSBpgtcHt8A/formResponse" method="post" target="hidden_iframe" class="form-group card card-body">
 
@@ -458,7 +458,7 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
         successUrl: 'https://serveonline.pp.ua',
         cancelUrl: 'https://serveonline.pp.ua',
         submitType: 'donate',
-      });
+      }).then(console.log).catch(console.error);
 
 
 
