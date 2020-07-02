@@ -15,241 +15,6 @@ layout: simple
 
 
 
-<script>
-
-
-window.onload = (event) => {
-
-// Clipboard js
-// https://github.com/zenorocha/clipboard.js
-// QR code generator
-// https://github.com/davidshimjs/qrcodejs
-
-// Hide share button content when donate button is clicked
-$('#donatediv').on('show.bs.collapse', function () {
-  $('#sharediv').collapse('hide')
-
-})
-// Hide donate button content when share button is clicked
-$('#sharediv').on('show.bs.collapse', function () {
-  $('#donatediv').collapse('hide')
-})
-// Generating QR and adding to element by id
-new QRCode(document.getElementById("upiqr"), "upi://pay?pa=fawazahmed95@okicici&pn=Fawaz%20Ahmed");
-
-new QRCode(document.getElementById("btcqr"), $('#btcaddress').text().trim());
-
-new QRCode(document.getElementById("etherqr"), $('#etheraddress').text().trim());
-
-new QRCode(document.getElementById("tetherqr"), $('#tetheraddress').text().trim());
-
-new QRCode(document.getElementById("rippleqr"), $('#rippleaddress').text().trim());
-
-// Tooltip initialization
- $('[data-toggle="tooltip"]').tooltip({
- trigger:'click',
- title: 'Copied!',
- placement: 'auto'
- });
-
- // After the tooltip is shown, hide it
- $('[data-toggle="tooltip"]').on('shown.bs.tooltip', function () {
- $(this).tooltip('hide')
-})
-
-// When issue send is clicked, collapse and then show the toast message
-$( "#issuesend" ).click(function() {
-
-  $('#issue').collapse('hide')
-
-  $('#issuetoast').toast('show')
-});
-
-// Empty the previous textarea value in issue when show event is fired
- $('#issue').on('show.bs.collapse', function () {
-  $('#issuetext').val('')
-})
-
- // Adding clipboard functionality to all button with copybtn class
-new ClipboardJS('.copybtn');
-
-
-var mobile=false;
-// https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent
-// Check whether the device is mobile
-function ismobile(){
-var hasTouchScreen = false;
-if ("maxTouchPoints" in navigator) {
-    hasTouchScreen = navigator.maxTouchPoints > 0;
-} else if ("msMaxTouchPoints" in navigator) {
-    hasTouchScreen = navigator.msMaxTouchPoints > 0;
-} else {
-    var mQ = window.matchMedia && matchMedia("(pointer:coarse)");
-    if (mQ && mQ.media === "(pointer:coarse)") {
-        hasTouchScreen = !!mQ.matches;
-    } else if ('orientation' in window) {
-        hasTouchScreen = true; // deprecated, but good fallback
-    } else {
-        // Only as a last resort, fall back to user agent sniffing
-        var UA = navigator.userAgent;
-        hasTouchScreen = (
-            /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
-            /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
-        );
-    }
-}
-mobile=hasTouchScreen;
-return hasTouchScreen;
-
-}
-ismobile()
-
-
-
-var sharelink = "https://github.com/fawazahmed0/Latest-adb-fastboot-installer-for-windows"
-sharelink = encodeURIComponent(sharelink)
-var smalltext = "Easy Android USB drivers installer tool"
-smalltext = encodeURIComponent(smalltext)
-var largetext = "Check this out, this tool makes the andriod usb drivers installation process seemless and easy"
-largetext = encodeURIComponent(largetext)
-
-// Attaching the buttons using javascript, so in future just have to change the above variables
-$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" href="https://www.facebook.com/sharer/sharer.php?u='+sharelink+'" target="_blank" type="button">Facebook</a>' );
-
-$( "#sharediv" ).append( '<a class="btn btn-success mb-1" id="whatsappbtn" href="https://web.whatsapp.com/send?text='+largetext+'%20'+sharelink+'" target="_blank" type="button">WhatsApp</a>' );
-
-$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" href="https://twitter.com/intent/tweet?text='+largetext+'%3A%20'+sharelink+'" target="_blank" type="button">Twitter</a>' );
-
-$( "#sharediv" ).append( '<a class="btn btn-warning mb-1" href="mailto:?subject='+smalltext+'&body='+largetext+'%20'+sharelink+'" target="_blank" type="button">Email</a>' );
-
-$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" id="telegrambtn" href="https://t.me/share/url?url='+sharelink+'&text='+largetext+'" target="_blank" type="button">Telegram</a>' );
-
-$( "#sharediv" ).append( '<a class="btn btn-danger mb-1" href="https://www.reddit.com/submit?url='+sharelink+'" target="_blank" type="button">Reddit</a>' );
-
-$( "#sharediv" ).append( '<a class="btn btn-warning mb-1" id="weibobtn" href="http://service.weibo.com/share/share.php?url='+sharelink+'&appkey=&title='+largetext+'" target="_blank" type="button">Weibo</a>' );
-
-$( "#sharediv" ).append( '<a class="btn btn-dark mb-1" href="http://www.tumblr.com/share/link?url='+sharelink+'" target="_blank" type="button">Tumblr</a>' );
-
-
-if(mobile){
-$('#whatsappbtn').attr("href","whatsapp://send?text="+largetext+"%20"+sharelink)
-
- $('#telegrambtn').attr("href","tg://msg?url="+sharelink+"&text="+largetext)
-
- $('#weibobtn').remove()
-
-
-}
-
-
-// My message specific to tool
-var mymsg = 'If you don’t know for sure, guessing is not the next best thing. According to a 2017 study by the folks at American Express, a person from the U.S. is going to tell an average of 15 people about a bad customer service experience. Even worse, research by thinkJar’s CEO, Esteban Kolsky, found that only 1 out of 26 unhappy customers complain. The rest will just leave.'
-
-$('#mymsg').text(mymsg)
-
-
-
-
-// Logs any error in console.everything
-//  https://stackoverflow.com/questions/19846078/how-to-read-from-chromes-console-in-javascript
-
-if (console.everything === undefined)
-{
-    console.everything = [];
-
-    console.defaultLog = console.log.bind(console);
-    console.log = function(){
-        console.everything.push({"type":"log", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
-        console.defaultLog.apply(console, arguments);
-    }
-    console.defaultError = console.error.bind(console);
-    console.error = function(){
-        console.everything.push({"type":"error", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
-        console.defaultError.apply(console, arguments);
-    }
-    console.defaultWarn = console.warn.bind(console);
-    console.warn = function(){
-        console.everything.push({"type":"warn", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
-        console.defaultWarn.apply(console, arguments);
-    }
-    console.defaultDebug = console.debug.bind(console);
-    console.debug = function(){
-        console.everything.push({"type":"debug", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
-        console.defaultDebug.apply(console, arguments);
-    }
-}
-
-
-
-// Code for stripe
-
-  var zeroDecimal = ["bif","clp","djf","gnf","jpy","kmf","krw","mga","pyg","rwf","vnd","vuv","xaf","xof","xpf"]
-
-  var allCurrency = ["usd","eur","gbp","chf","aud","nzd","cny","jpy","cad","sek","zar","inr","aed","afn","all","amd","ang","aoa","ars","awg","azn","bam","bbd","bdt","bgn","bif","bmd","bnd","bob","brl","bsd","bwp","bzd","cdf","clp","cop","crc","cve","czk","djf","dkk","dop","dzd","egp","etb","fjd","fkp","gel","gip","gmd","gnf","gtq","gyd","hkd","hnl","hrk","htg","huf","idr","ils","isk","jmd","kes","kgs","khr","kmf","krw","kyd","kzt","lak","lbp","lkr","lrd","lsl","mad","mdl","mga","mkd","mmk","mnt","mop","mro","mur","mvr","mwk","mxn","myr","mzn","nad","ngn","nio","nok","npr","pab","pen","pgk","php","pkr","pln","pyg","qar","ron","rsd","rub","rwf","sar","sbd","scr","sgd","shp","sll","sos","srd","std","szl","thb","tjs","top","try","ttd","twd","tzs","uah","ugx","uyu","uzs","vnd","vuv","wst","xaf","xcd","xof","xpf","yer","zmw"]
-
-//  var decimalCurrency = allCurrency.filter(currency => !zeroDecimal.includes(currency))
-
-for(curr of allCurrency){
-
-  $('#currencylist').append('<option value="'+curr.toUpperCase()+'"></option>')
-}
-
-var oneTime, multiTime;
-fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/onetime.json').then(response => response.json()).then(data => oneTime=data).catch(console.error);
-
-fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/multitime.json').then(response => response.json()).then(data => multiTime=data).catch(console.error);
-
-var stripe = Stripe('pk_live_2iSPDOnC126d0dnNPfESsaTk007wld2uGp');
-
-
-
-
-function striperun(){
-
-
-  var curr = $('#currency').val().trim().toLowerCase()
-  var mode = $('input[name="occurence"]:checked').val().trim();
-  var amount = $('#amt').val().trim();
-  var jsonlist = oneTime
-  var quantityval;
-
-if(zeroDecimal.includes(curr))
-     quantityval = parseInt(amount)
-else if(curr == "ugx")
-     quantityval = parseInt(amount)*100
-else
-     quantityval = parseInt(amount*100)
-
-
-  if(mode == 'subscription')
-   jsonlist = multiTime
-
-    // When the customer clicks on the button, redirect
-    // them to Checkout.
-    stripe.redirectToCheckout({
-      lineItems: [{price: jsonlist[curr], quantity: quantityval }],
-      mode: mode,
-      // Do not rely on the redirect to the successUrl for fulfilling
-      // purchases, customers may not always reach the success_url after
-      // a successful payment.
-      // Instead use one of the strategies described in
-      // https://stripe.com/docs/payments/checkout/fulfillment
-      successUrl: 'https://serveonline.pp.ua',
-      cancelUrl: 'https://serveonline.pp.ua',
-      submitType: 'donate',
-    });
-
-
-
-}
-
-}
-
-</script>
-
-
-
-
 
 
 
@@ -601,3 +366,264 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 
 
 </div>
+
+
+
+<script>
+
+
+
+
+  if (console.everything === undefined)
+  {
+      console.everything = [];
+
+      console.defaultLog = console.log.bind(console);
+      console.log = function(){
+          console.everything.push({"type":"log", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
+          console.defaultLog.apply(console, arguments);
+      }
+      console.defaultError = console.error.bind(console);
+      console.error = function(){
+          console.everything.push({"type":"error", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
+          console.defaultError.apply(console, arguments);
+      }
+      console.defaultWarn = console.warn.bind(console);
+      console.warn = function(){
+          console.everything.push({"type":"warn", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
+          console.defaultWarn.apply(console, arguments);
+      }
+      console.defaultDebug = console.debug.bind(console);
+      console.debug = function(){
+          console.everything.push({"type":"debug", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
+          console.defaultDebug.apply(console, arguments);
+      }
+  }
+
+
+
+  // Code for stripe
+
+    var zeroDecimal = ["bif","clp","djf","gnf","jpy","kmf","krw","mga","pyg","rwf","vnd","vuv","xaf","xof","xpf"]
+
+    var allCurrency = ["usd","eur","gbp","chf","aud","nzd","cny","jpy","cad","sek","zar","inr","aed","afn","all","amd","ang","aoa","ars","awg","azn","bam","bbd","bdt","bgn","bif","bmd","bnd","bob","brl","bsd","bwp","bzd","cdf","clp","cop","crc","cve","czk","djf","dkk","dop","dzd","egp","etb","fjd","fkp","gel","gip","gmd","gnf","gtq","gyd","hkd","hnl","hrk","htg","huf","idr","ils","isk","jmd","kes","kgs","khr","kmf","krw","kyd","kzt","lak","lbp","lkr","lrd","lsl","mad","mdl","mga","mkd","mmk","mnt","mop","mro","mur","mvr","mwk","mxn","myr","mzn","nad","ngn","nio","nok","npr","pab","pen","pgk","php","pkr","pln","pyg","qar","ron","rsd","rub","rwf","sar","sbd","scr","sgd","shp","sll","sos","srd","std","szl","thb","tjs","top","try","ttd","twd","tzs","uah","ugx","uyu","uzs","vnd","vuv","wst","xaf","xcd","xof","xpf","yer","zmw"]
+
+  //  var decimalCurrency = allCurrency.filter(currency => !zeroDecimal.includes(currency))
+
+  for(curr of allCurrency){
+
+    $('#currencylist').append('<option value="'+curr.toUpperCase()+'"></option>')
+  }
+
+  var oneTime, multiTime;
+  fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/onetime.json').then(response => response.json()).then(data => oneTime=data).catch(console.error);
+
+  fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/multitime.json').then(response => response.json()).then(data => multiTime=data).catch(console.error);
+
+  var stripe;
+
+
+
+
+  function striperun(){
+
+
+    var curr = $('#currency').val().trim().toLowerCase()
+    var mode = $('input[name="occurence"]:checked').val().trim();
+    var amount = $('#amt').val().trim();
+    var jsonlist = oneTime
+    var quantityval;
+
+  if(zeroDecimal.includes(curr))
+       quantityval = parseInt(amount)
+  else if(curr == "ugx")
+       quantityval = parseInt(amount)*100
+  else
+       quantityval = parseInt(amount*100)
+
+
+    if(mode == 'subscription')
+     jsonlist = multiTime
+
+      // When the customer clicks on the button, redirect
+      // them to Checkout.
+      stripe.redirectToCheckout({
+        lineItems: [{price: jsonlist[curr], quantity: quantityval }],
+        mode: mode,
+        // Do not rely on the redirect to the successUrl for fulfilling
+        // purchases, customers may not always reach the success_url after
+        // a successful payment.
+        // Instead use one of the strategies described in
+        // https://stripe.com/docs/payments/checkout/fulfillment
+        successUrl: 'https://serveonline.pp.ua',
+        cancelUrl: 'https://serveonline.pp.ua',
+        submitType: 'donate',
+      });
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+window.onload = (event) => {
+
+  stripe = Stripe('pk_live_2iSPDOnC126d0dnNPfESsaTk007wld2uGp');
+
+// Clipboard js
+// https://github.com/zenorocha/clipboard.js
+// QR code generator
+// https://github.com/davidshimjs/qrcodejs
+
+// Hide share button content when donate button is clicked
+$('#donatediv').on('show.bs.collapse', function () {
+  $('#sharediv').collapse('hide')
+
+})
+// Hide donate button content when share button is clicked
+$('#sharediv').on('show.bs.collapse', function () {
+  $('#donatediv').collapse('hide')
+})
+// Generating QR and adding to element by id
+new QRCode(document.getElementById("upiqr"), "upi://pay?pa=fawazahmed95@okicici&pn=Fawaz%20Ahmed");
+
+new QRCode(document.getElementById("btcqr"), $('#btcaddress').text().trim());
+
+new QRCode(document.getElementById("etherqr"), $('#etheraddress').text().trim());
+
+new QRCode(document.getElementById("tetherqr"), $('#tetheraddress').text().trim());
+
+new QRCode(document.getElementById("rippleqr"), $('#rippleaddress').text().trim());
+
+// Tooltip initialization
+ $('[data-toggle="tooltip"]').tooltip({
+ trigger:'click',
+ title: 'Copied!',
+ placement: 'auto'
+ });
+
+ // After the tooltip is shown, hide it
+ $('[data-toggle="tooltip"]').on('shown.bs.tooltip', function () {
+ $(this).tooltip('hide')
+})
+
+// When issue send is clicked, collapse and then show the toast message
+$( "#issuesend" ).click(function() {
+
+  $('#issue').collapse('hide')
+
+  $('#issuetoast').toast('show')
+});
+
+// Empty the previous textarea value in issue when show event is fired
+ $('#issue').on('show.bs.collapse', function () {
+  $('#issuetext').val('')
+})
+
+ // Adding clipboard functionality to all button with copybtn class
+new ClipboardJS('.copybtn');
+
+
+var mobile=false;
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent
+// Check whether the device is mobile
+function ismobile(){
+var hasTouchScreen = false;
+if ("maxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.maxTouchPoints > 0;
+} else if ("msMaxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.msMaxTouchPoints > 0;
+} else {
+    var mQ = window.matchMedia && matchMedia("(pointer:coarse)");
+    if (mQ && mQ.media === "(pointer:coarse)") {
+        hasTouchScreen = !!mQ.matches;
+    } else if ('orientation' in window) {
+        hasTouchScreen = true; // deprecated, but good fallback
+    } else {
+        // Only as a last resort, fall back to user agent sniffing
+        var UA = navigator.userAgent;
+        hasTouchScreen = (
+            /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
+            /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
+        );
+    }
+}
+mobile=hasTouchScreen;
+return hasTouchScreen;
+
+}
+ismobile()
+
+
+
+var sharelink = "https://github.com/fawazahmed0/Latest-adb-fastboot-installer-for-windows"
+sharelink = encodeURIComponent(sharelink)
+var smalltext = "Easy Android USB drivers installer tool"
+smalltext = encodeURIComponent(smalltext)
+var largetext = "Check this out, this tool makes the andriod usb drivers installation process seemless and easy"
+largetext = encodeURIComponent(largetext)
+
+// Attaching the buttons using javascript, so in future just have to change the above variables
+$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" href="https://www.facebook.com/sharer/sharer.php?u='+sharelink+'" target="_blank" type="button">Facebook</a>' );
+
+$( "#sharediv" ).append( '<a class="btn btn-success mb-1" id="whatsappbtn" href="https://web.whatsapp.com/send?text='+largetext+'%20'+sharelink+'" target="_blank" type="button">WhatsApp</a>' );
+
+$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" href="https://twitter.com/intent/tweet?text='+largetext+'%3A%20'+sharelink+'" target="_blank" type="button">Twitter</a>' );
+
+$( "#sharediv" ).append( '<a class="btn btn-warning mb-1" href="mailto:?subject='+smalltext+'&body='+largetext+'%20'+sharelink+'" target="_blank" type="button">Email</a>' );
+
+$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" id="telegrambtn" href="https://t.me/share/url?url='+sharelink+'&text='+largetext+'" target="_blank" type="button">Telegram</a>' );
+
+$( "#sharediv" ).append( '<a class="btn btn-danger mb-1" href="https://www.reddit.com/submit?url='+sharelink+'" target="_blank" type="button">Reddit</a>' );
+
+$( "#sharediv" ).append( '<a class="btn btn-warning mb-1" id="weibobtn" href="http://service.weibo.com/share/share.php?url='+sharelink+'&appkey=&title='+largetext+'" target="_blank" type="button">Weibo</a>' );
+
+$( "#sharediv" ).append( '<a class="btn btn-dark mb-1" href="http://www.tumblr.com/share/link?url='+sharelink+'" target="_blank" type="button">Tumblr</a>' );
+
+
+if(mobile){
+$('#whatsappbtn').attr("href","whatsapp://send?text="+largetext+"%20"+sharelink)
+
+ $('#telegrambtn').attr("href","tg://msg?url="+sharelink+"&text="+largetext)
+
+ $('#weibobtn').remove()
+
+
+}
+
+
+// My message specific to tool
+var mymsg = 'If you don’t know for sure, guessing is not the next best thing. According to a 2017 study by the folks at American Express, a person from the U.S. is going to tell an average of 15 people about a bad customer service experience. Even worse, research by thinkJar’s CEO, Esteban Kolsky, found that only 1 out of 26 unhappy customers complain. The rest will just leave.'
+
+$('#mymsg').text(mymsg)
+
+
+
+
+// Logs any error in console.everything
+//  https://stackoverflow.com/questions/19846078/how-to-read-from-chromes-console-in-javascript
+
+
+}
+
+</script>
