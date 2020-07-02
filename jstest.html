@@ -1,0 +1,112 @@
+<script src="https://js.stripe.com/v3"></script>
+<script
+			  src="https://code.jquery.com/jquery-3.5.1.min.js"
+			  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+			  crossorigin="anonymous"></script>
+
+<!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+
+
+<input type="radio" id="onetime" name="occurences" value="payment">
+<label for="onetime">One Time</label><br>
+<input type="radio" id="monthly" name="occurences" value="subscription">
+<label for="monthly">Monthly</label><br>
+
+
+<input class="form-control" list="currencylist" name="currency" id="currency" required autocomplete="off">
+                    <datalist id="currencylist">
+
+                    </datalist>
+  <input id="amt" type="number" min="0.01" step="0.01" class="form-control" placeholder="Enter Amount" required>
+
+<button id="mybtn" role="link">
+  Checkout
+</button>
+
+
+
+<div id="error-message"></div>
+
+<script>
+
+  var zeroDecimal = ["bif","clp","djf","gnf","huf","jpy","kmf","krw","mga","pyg","rwf","vnd","vuv","xaf","xof","xpf"]
+
+  var allCurrency = ["usd","eur","gbp","chf","aud","nzd","cny","jpy","cad","sek","zar","inr","aed","afn","all","amd","ang","aoa","ars","awg","azn","bam","bbd","bdt","bgn","bif","bmd","bnd","bob","brl","bsd","bwp","bzd","cdf","clp","cop","crc","cve","czk","djf","dkk","dop","dzd","egp","etb","fjd","fkp","gel","gip","gmd","gnf","gtq","gyd","hkd","hnl","hrk","htg","huf","idr","ils","isk","jmd","kes","kgs","khr","kmf","krw","kyd","kzt","lak","lbp","lkr","lrd","lsl","mad","mdl","mga","mkd","mmk","mnt","mop","mro","mur","mvr","mwk","mxn","myr","mzn","nad","ngn","nio","nok","npr","pab","pen","pgk","php","pkr","pln","pyg","qar","ron","rsd","rub","rwf","sar","sbd","scr","sgd","shp","sll","sos","srd","std","szl","thb","tjs","top","try","ttd","twd","tzs","uah","ugx","uyu","uzs","vnd","vuv","wst","xaf","xcd","xof","xpf","yer","zmw"]
+
+  var decimalCurrency = allCurrency.filter(currency => !zeroDecimal.includes(currency))
+
+for(curr of allCurrency){
+
+  $('#currencylist').append('<option value="'+curr.toUpperCase()+'"></option>')
+}
+
+var oneTime, multiTime;
+fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/onetime.json')
+.then(response => response.json())
+.then(data => oneTime=data)
+
+fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/multitime.json')
+.then(response => response.json())
+.then(data => multiTime=data)
+
+
+
+
+(function() {
+  var stripe = Stripe('pk_live_2iSPDOnC126d0dnNPfESsaTk007wld2uGp');
+
+  var checkoutButton = document.getElementById('mybtn');
+  checkoutButton.addEventListener('click', function () {
+
+var curr = $('#currency').val().trim().toLowerCase()
+  var mode = $('input[name="occurences"]:checked').val().trim();
+var amount = $('#amt').val().trim();
+var jsonlist = oneTime
+if(mode.equals('subscription'))
+   jsonlist = multiTime
+
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      lineItems: [{price: jsonlist[curr], quantity: zeroDecimal.includes(curr) ? parseInt(amount) : parseInt(amount*100)}],
+      mode: mode,
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: 'https://github.com/fawazahmed0/success',
+      cancelUrl: 'https://github.com/fawazahmed0/canceled',
+      submitType: 'donate',
+    })
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message');
+        displayError.textContent = result.error.message;
+      }
+    });
+  });
+})();
+
+
+
+
+// To get currency from datalist
+$('#currency').val()
+// To get radio value
+$('input[name="occurences"]:checked').val();
+// To get Amount
+$('#amt').val()
+
+
+
+
+
+// oneTime
+// https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/onetime.json
+// multiTime
+// https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/multitime.json
+
+</script>
