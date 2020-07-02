@@ -5,7 +5,7 @@
 			  crossorigin="anonymous"></script>
 
 <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
-
+<form onsubmit="test();">
 
 <input type="radio" id="onetime" name="occurences" value="payment">
 <label for="onetime">One Time</label><br>
@@ -19,11 +19,9 @@
                     </datalist>
   <input id="amt" type="number" min="0.01" step="0.01" class="form-control" placeholder="Enter Amount" required>
 
-<button id="mybtn" role="link" onclick="test()">
-  Checkout
-</button>
 
-
+<input  id="mybtn" role="link" type="submit" value="Submit">
+</form>
 
 <div id="error-message"></div>
 
