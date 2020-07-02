@@ -2,47 +2,602 @@
 title: Donate & Share
 layout: simple
 ---
-<!-- Load Stripe.js on your website. -->
-<script src="https://js.stripe.com/v3"></script>
 
-<!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
-<button
-  style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
-  id="checkout-button-price_1Gz1q6JeEt7Hw0L2EFHp88tA"
-  role="link"
->
-  Checkout
-</button>
 
-<div id="error-message"></div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" ></iframe>
+
+
+
+
 
 <script>
-(function() {
-  var stripe = Stripe('pk_live_2iSPDOnC126d0dnNPfESsaTk007wld2uGp');
 
-  var checkoutButton = document.getElementById('checkout-button-price_1Gz1q6JeEt7Hw0L2EFHp88tA');
-  checkoutButton.addEventListener('click', function () {
+
+window.onload = (event) => {
+
+// Clipboard js
+// https://github.com/zenorocha/clipboard.js
+// QR code generator
+// https://github.com/davidshimjs/qrcodejs
+
+// Hide share button content when donate button is clicked
+$('#donatediv').on('show.bs.collapse', function () {
+  $('#sharediv').collapse('hide')
+
+})
+// Hide donate button content when share button is clicked
+$('#sharediv').on('show.bs.collapse', function () {
+  $('#donatediv').collapse('hide')
+})
+// Generating QR and adding to element by id
+new QRCode(document.getElementById("upiqr"), "upi://pay?pa=fawazahmed95@okicici&pn=Fawaz%20Ahmed");
+
+new QRCode(document.getElementById("btcqr"), $('#btcaddress').text().trim());
+
+new QRCode(document.getElementById("etherqr"), $('#etheraddress').text().trim());
+
+new QRCode(document.getElementById("tetherqr"), $('#tetheraddress').text().trim());
+
+new QRCode(document.getElementById("rippleqr"), $('#rippleaddress').text().trim());
+
+// Tooltip initialization
+ $('[data-toggle="tooltip"]').tooltip({
+ trigger:'click',
+ title: 'Copied!',
+ placement: 'auto'
+ });
+
+ // After the tooltip is shown, hide it
+ $('[data-toggle="tooltip"]').on('shown.bs.tooltip', function () {
+ $(this).tooltip('hide')
+})
+
+// When issue send is clicked, collapse and then show the toast message
+$( "#issuesend" ).click(function() {
+
+  $('#issue').collapse('hide')
+
+  $('#issuetoast').toast('show')
+});
+
+// Empty the previous textarea value in issue when show event is fired
+ $('#issue').on('show.bs.collapse', function () {
+  $('#issuetext').val('')
+})
+
+ // Adding clipboard functionality to all button with copybtn class
+new ClipboardJS('.copybtn');
+
+
+var mobile=false;
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent
+// Check whether the device is mobile
+function ismobile(){
+var hasTouchScreen = false;
+if ("maxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.maxTouchPoints > 0;
+} else if ("msMaxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.msMaxTouchPoints > 0;
+} else {
+    var mQ = window.matchMedia && matchMedia("(pointer:coarse)");
+    if (mQ && mQ.media === "(pointer:coarse)") {
+        hasTouchScreen = !!mQ.matches;
+    } else if ('orientation' in window) {
+        hasTouchScreen = true; // deprecated, but good fallback
+    } else {
+        // Only as a last resort, fall back to user agent sniffing
+        var UA = navigator.userAgent;
+        hasTouchScreen = (
+            /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
+            /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
+        );
+    }
+}
+mobile=hasTouchScreen;
+return hasTouchScreen;
+
+}
+ismobile()
+
+
+
+var sharelink = "https://github.com/fawazahmed0/Latest-adb-fastboot-installer-for-windows"
+sharelink = encodeURIComponent(sharelink)
+var smalltext = "Easy Android USB drivers installer tool"
+smalltext = encodeURIComponent(smalltext)
+var largetext = "Check this out, this tool makes the andriod usb drivers installation process seemless and easy"
+largetext = encodeURIComponent(largetext)
+
+// Attaching the buttons using javascript, so in future just have to change the above variables
+$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" href="https://www.facebook.com/sharer/sharer.php?u='+sharelink+'" target="_blank" type="button">Facebook</a>' );
+
+$( "#sharediv" ).append( '<a class="btn btn-success mb-1" id="whatsappbtn" href="https://web.whatsapp.com/send?text='+largetext+'%20'+sharelink+'" target="_blank" type="button">WhatsApp</a>' );
+
+$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" href="https://twitter.com/intent/tweet?text='+largetext+'%3A%20'+sharelink+'" target="_blank" type="button">Twitter</a>' );
+
+$( "#sharediv" ).append( '<a class="btn btn-warning mb-1" href="mailto:?subject='+smalltext+'&body='+largetext+'%20'+sharelink+'" target="_blank" type="button">Email</a>' );
+
+$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" id="telegrambtn" href="https://t.me/share/url?url='+sharelink+'&text='+largetext+'" target="_blank" type="button">Telegram</a>' );
+
+$( "#sharediv" ).append( '<a class="btn btn-danger mb-1" href="https://www.reddit.com/submit?url='+sharelink+'" target="_blank" type="button">Reddit</a>' );
+
+$( "#sharediv" ).append( '<a class="btn btn-warning mb-1" id="weibobtn" href="http://service.weibo.com/share/share.php?url='+sharelink+'&appkey=&title='+largetext+'" target="_blank" type="button">Weibo</a>' );
+
+$( "#sharediv" ).append( '<a class="btn btn-dark mb-1" href="http://www.tumblr.com/share/link?url='+sharelink+'" target="_blank" type="button">Tumblr</a>' );
+
+
+if(mobile){
+$('#whatsappbtn').attr("href","whatsapp://send?text="+largetext+"%20"+sharelink)
+
+ $('#telegrambtn').attr("href","tg://msg?url="+sharelink+"&text="+largetext)
+
+ $('#weibobtn').remove()
+
+
+}
+
+
+// My message specific to tool
+var mymsg = 'If you don’t know for sure, guessing is not the next best thing. According to a 2017 study by the folks at American Express, a person from the U.S. is going to tell an average of 15 people about a bad customer service experience. Even worse, research by thinkJar’s CEO, Esteban Kolsky, found that only 1 out of 26 unhappy customers complain. The rest will just leave.'
+
+$('#mymsg').text(mymsg)
+
+
+
+
+// Logs any error in console.everything
+//  https://stackoverflow.com/questions/19846078/how-to-read-from-chromes-console-in-javascript
+
+if (console.everything === undefined)
+{
+    console.everything = [];
+
+    console.defaultLog = console.log.bind(console);
+    console.log = function(){
+        console.everything.push({"type":"log", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
+        console.defaultLog.apply(console, arguments);
+    }
+    console.defaultError = console.error.bind(console);
+    console.error = function(){
+        console.everything.push({"type":"error", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
+        console.defaultError.apply(console, arguments);
+    }
+    console.defaultWarn = console.warn.bind(console);
+    console.warn = function(){
+        console.everything.push({"type":"warn", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
+        console.defaultWarn.apply(console, arguments);
+    }
+    console.defaultDebug = console.debug.bind(console);
+    console.debug = function(){
+        console.everything.push({"type":"debug", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
+        console.defaultDebug.apply(console, arguments);
+    }
+}
+
+
+
+// Code for stripe
+
+  var zeroDecimal = ["bif","clp","djf","gnf","jpy","kmf","krw","mga","pyg","rwf","vnd","vuv","xaf","xof","xpf"]
+
+  var allCurrency = ["usd","eur","gbp","chf","aud","nzd","cny","jpy","cad","sek","zar","inr","aed","afn","all","amd","ang","aoa","ars","awg","azn","bam","bbd","bdt","bgn","bif","bmd","bnd","bob","brl","bsd","bwp","bzd","cdf","clp","cop","crc","cve","czk","djf","dkk","dop","dzd","egp","etb","fjd","fkp","gel","gip","gmd","gnf","gtq","gyd","hkd","hnl","hrk","htg","huf","idr","ils","isk","jmd","kes","kgs","khr","kmf","krw","kyd","kzt","lak","lbp","lkr","lrd","lsl","mad","mdl","mga","mkd","mmk","mnt","mop","mro","mur","mvr","mwk","mxn","myr","mzn","nad","ngn","nio","nok","npr","pab","pen","pgk","php","pkr","pln","pyg","qar","ron","rsd","rub","rwf","sar","sbd","scr","sgd","shp","sll","sos","srd","std","szl","thb","tjs","top","try","ttd","twd","tzs","uah","ugx","uyu","uzs","vnd","vuv","wst","xaf","xcd","xof","xpf","yer","zmw"]
+
+//  var decimalCurrency = allCurrency.filter(currency => !zeroDecimal.includes(currency))
+
+for(curr of allCurrency){
+
+  $('#currencylist').append('<option value="'+curr.toUpperCase()+'"></option>')
+}
+
+var oneTime, multiTime;
+fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/onetime.json').then(response => response.json()).then(data => oneTime=data).catch(console.error);
+
+fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/multitime.json').then(response => response.json()).then(data => multiTime=data).catch(console.error);
+
+var stripe = Stripe('pk_live_2iSPDOnC126d0dnNPfESsaTk007wld2uGp');
+
+
+
+
+function striperun(){
+
+
+  var curr = $('#currency').val().trim().toLowerCase()
+  var mode = $('input[name="occurence"]:checked').val().trim();
+  var amount = $('#amt').val().trim();
+  var jsonlist = oneTime
+  var quantityval;
+
+if(zeroDecimal.includes(curr))
+     quantityval = parseInt(amount)
+else if(curr == "ugx")
+     quantityval = parseInt(amount)*100
+else
+     quantityval = parseInt(amount*100)
+
+
+  if(mode == 'subscription')
+   jsonlist = multiTime
+
     // When the customer clicks on the button, redirect
     // them to Checkout.
     stripe.redirectToCheckout({
-      lineItems: [{price: 'price_1Gz1q6JeEt7Hw0L2EFHp88tA', quantity: 1}],
-      mode: 'subscription',
+      lineItems: [{price: jsonlist[curr], quantity: quantityval }],
+      mode: mode,
       // Do not rely on the redirect to the successUrl for fulfilling
       // purchases, customers may not always reach the success_url after
       // a successful payment.
       // Instead use one of the strategies described in
       // https://stripe.com/docs/payments/checkout/fulfillment
-      successUrl: 'https://github.com/fawazahmed0/success',
-      cancelUrl: 'https://github.com/fawazahmed0/canceled',
-    })
-    .then(function (result) {
-      if (result.error) {
-        // If `redirectToCheckout` fails due to a browser or network
-        // error, display the localized error message to your customer.
-        var displayError = document.getElementById('error-message');
-        displayError.textContent = result.error.message;
-      }
+      successUrl: 'https://serveonline.pp.ua',
+      cancelUrl: 'https://serveonline.pp.ua',
+      submitType: 'donate',
     });
-  });
-})();
+
+
+
+}
+
+}
+
 </script>
+
+
+
+
+
+
+
+
+
+
+
+<!--Referred: https://getbootstrap.com/docs/4.5/getting-started/introduction/ -->
+
+
+
+<div class="container-fluid">
+
+  <div class="row">
+
+    <div class="col border-0 bg-light m-3">
+
+
+   <h5 class="row" id="mymsg">
+
+   </h5>
+   <div class="row bg-light">
+
+
+    <a class="btn btn-link" id="issuebtn" data-toggle="collapse" href="#issue" role="button" aria-expanded="false" aria-controls="issue">
+     Facing any issue? Let me know
+   </a>
+
+
+   <div class="collapse" id="issue">
+  <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSd9agrjOEE0khzfeaBhdH18ADEm2-kvy6Mkv8aFSBpgtcHt8A/formResponse" method="post" target="hidden_iframe" class="form-group card card-body">
+
+<textarea id="issuetext" type="text" placeholder="Let me know what issue you faced" name="entry.1071744889" rows=5></textarea>
+
+
+      <button id="issuesend" class="btn btn-primary float-right" type="submit">Send</button>
+</form>
+
+   </div>
+  <div id="issuetoast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+  <div class="toast-header">
+
+    <strong class="mr-auto">Thank you</strong>
+
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    Thanks for reporting the problem, I will look into the issue as soon as I can.
+  </div>
+</div>
+
+
+   </div>
+    </div>
+    <div class="col border-0 bg-white">
+
+
+
+      <div class="container">
+        <div class="row bg-white">
+          <div class="col-6">
+            <img src="https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/images/currency.png" class="img-fluid rounded m-3" alt="MasterCard Amex Visa Paypal Tether Bitcoin Ethereum Ripple Payment Accepted">
+
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+      <div class="container">
+        <div class="row bg-white">
+          <div class="col border-0 justify-content-center">
+            <a class="btn btn-primary btn-lg mx-4" data-toggle="collapse" href="#donatediv" role="button" aria-expanded="false" aria-controls="donatediv">
+             &#10084; Dosante
+            </a>
+
+          </div>
+          <div class="col border-0 justify-content-center">
+
+
+            <a class="btn btn-primary btn-lg mx-4" data-toggle="collapse" href="#sharediv" role="button" aria-expanded="false" aria-controls="sharediv">
+          &#10150; Share
+            </a>
+
+          </div>
+
+
+        </div>
+      </div>
+
+
+
+
+<!--html entities unicode symbols https://www.toptal.com/designers/htmlarrows/symbols/
+https://unicode.org/emoji/charts/full-emoji-list.html
+For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x and append by ;
+-->
+
+
+      <div class="collapse mt-5 card card-body" id="sharediv">
+
+       <div class="card-title font-weight-bold pl-3">Share it with your friends</div>
+
+
+
+
+
+      </div>
+
+      <div class="collapse" id="donatediv">
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="accordion" id="accordioncard">
+          <div class="card">
+            <div class="card-header" id="headingcard">
+              <h2 class="mb-0">
+
+                <div class="btn-group" role="group" aria-label="currency">
+
+
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsecard" aria-expanded="true" aria-controls="collapsecard">Stripe(Card Payment)</button>
+
+                  <a class="btn btn-link" href="https://paypal.me/fawazahmed0" target="_blank" type="button">PayPal</a>
+                </div>
+
+
+              </h2>
+            </div>
+
+            <div id="collapsecard" class="collapse" aria-labelledby="headingOne" data-parent="#accordioncard">
+              <div class="card-body">
+
+
+
+
+
+
+
+                <form onsubmit="striperun(); return false;">
+                  <div class="form-group">
+
+
+                    <div class="form-check form-check-inline">
+
+                      <input class="form-check-input" type="radio" name="occurence" id="onetime1" value="payment" checked>
+                      <label class="form-check-label" for="payment">
+                        One Time
+                      </label>
+
+
+                    </div>
+
+
+                    <div class="form-check form-check-inline">
+
+                      <input class="form-check-input" type="radio" name="occurence" id="monthly1" value="subscription">
+                      <label class="form-check-label" for="subscription">
+                        Monthly
+                      </label>
+
+
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-3 border-0">
+
+                      <input class="form-control" list="currencylist" name="currency" id="currency" placeholder="Currency" required>
+                      <datalist id="currencylist">
+                      </datalist>
+                    </div>
+
+                    <div class="col-6 border-0">
+                      <input id="amt" type="number" min="0.01" step="0.01" class="form-control" placeholder="Enter Amount" required>
+                    </div>
+                    <div class="col-3 border-0">
+                      <button type="submit" class="btn btn-primary">Donate</button>
+                    </div>
+
+
+
+
+                  </div>
+                </form>
+
+
+
+
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="accordion" id="accordioncrypto">
+          <div class="card">
+            <div class="card-header" id="headingtwo">
+              <h2 class="mb-0">
+                <div class="btn-group" role="group" aria-label="cryptocurrency">
+
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsebitcoin" aria-expanded="true" aria-controls="collapsebitcoin">Bitcoin</button>
+
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseether" aria-expanded="true" aria-controls="collapseether">Ethereum</button>
+
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsetether" aria-expanded="true" aria-controls="collapsetether">Tether</button>
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseripple" aria-expanded="true" aria-controls="collapseripple">Ripple</button>
+
+
+                </div>
+
+
+
+
+              </h2>
+            </div>
+
+            <div id="collapsebitcoin" class="collapse" aria-labelledby="collapsebitcoin" data-parent="#accordioncrypto">
+               <div class="card-body" id="cardbtc">
+                <div id="btcqr">
+
+                </div>
+
+                <div class="m-3">
+                  <span class="font-weight-bold">Bitcoin(BTC) Address:</span> <span id="btcaddress">bc1q49xhj98wg6yy6z2h25vj3e5h4uw3hz0fwfxzc9</span>
+                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#btcaddress" data-toggle="tooltip">
+                    Copy
+                  </button>
+
+                </div>
+
+              </div>
+            </div>
+
+
+                <div id="collapseether" class="collapse" aria-labelledby="collapseether" data-parent="#accordioncrypto">
+               <div class="card-body" id="cardether">
+                <div id="etherqr">
+
+                </div>
+
+                <div class="m-3">
+                  <span class="font-weight-bold">Ethereum(ETH) Address:</span> <span id="etheraddress">0x275D669429E7b906243a0B19BAeD6061D4f06B2C</span>
+                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#etheraddress" data-toggle="tooltip">
+                    Copy
+                  </button>
+
+                </div>
+
+              </div>
+            </div>
+
+             <div id="collapsetether" class="collapse" aria-labelledby="collapsetether" data-parent="#accordioncrypto">
+               <div class="card-body" id="cardtether">
+                <div id="tetherqr">
+
+                </div>
+
+                <div class="m-3">
+                  <span class="font-weight-bold">Tether USD (USDT) Address:</span> <span id="tetheraddress">0x275D669429E7b906243a0B19BAeD6061D4f06B2C</span>
+                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#tetheraddress" data-toggle="tooltip">
+                    Copy
+                  </button>
+
+                </div>
+
+              </div>
+            </div>
+
+              <div id="collapseripple" class="collapse" aria-labelledby="collapseripple" data-parent="#accordioncrypto">
+               <div class="card-body" id="cardripple">
+                <div id="rippleqr">
+
+                </div>
+
+                <div class="m-3">
+                  <span class="font-weight-bold">Ripple(XRP) Address:</span> <span id="rippleaddress">rHiMKDfn7ygQ8oBMAf8HqRekFrAnU6QieX</span>
+                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#rippleaddress" data-toggle="tooltip">
+                    Copy
+                  </button>
+
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <div class="accordion" id="accordionupi">
+          <div class="card">
+            <div class="card-header" id="upione">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseupi" aria-expanded="true" aria-controls="collapsupi">
+                  UPI - GooglePay (Indian Users Only)
+                </button>
+              </h2>
+            </div>
+
+            <div id="collapseupi" class="collapse" aria-labelledby="upione" data-parent="#accordionupi">
+              <div class="card-body" id="cardupi">
+                <div id="upiqr">
+
+                </div>
+
+                <div class="m-3">
+                  <span class="font-weight-bold">UPI:</span> <span id="upiid"> fawazahmed95@okicici</span>
+                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#upiid" data-toggle="tooltip">
+                    Copy
+                  </button>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+</div>
