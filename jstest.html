@@ -69,13 +69,23 @@ function test(){
   var mode = $('input[name="occurences"]:checked').val().trim();
   var amount = $('#amt').val().trim();
   var jsonlist = oneTime
+  var quantityval;
+
+if(zeroDecimal.includes(curr))
+     quantityval = parseInt(amount)
+else if(curr == "ugx")
+     quantityval = parseInt(amount)*100
+else
+     quantityval = parseInt(amount*100)
+
+
   if(mode == 'subscription')
    jsonlist = multiTime
 
     // When the customer clicks on the button, redirect
     // them to Checkout.
     stripe.redirectToCheckout({
-      lineItems: [{price: jsonlist[curr], quantity: zeroDecimal.includes(curr) ? parseInt(amount) : parseInt(amount*100)}],
+      lineItems: [{price: jsonlist[curr], quantity: quantityval }],
       mode: mode,
       // Do not rely on the redirect to the successUrl for fulfilling
       // purchases, customers may not always reach the success_url after
