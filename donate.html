@@ -448,7 +448,8 @@ function errorsend(){
   var urlparams = currenturl.searchParams;
 
     // Default message on page
-  var mymsg = 'This is Fawaz Ahmed(fawazahmed0), I have done numerous open source projects as my hobby, you can check that at my <a target="_blank" href="https://github.com/fawazahmed0">GitHub</a>, if you like my work consider donating a few bucks to me or atleast consider sharing my work with your friends.'
+  var mymsg = `This is Fawaz Ahmed (fawazahmed0), I have done many open source projects as my hobby, you can check that at my <a target="_blank" href="https://github.com/fawazahmed0">GitHub</a>.<br><br>
+If you like my work consider donating a few bucks to me or at least consider sharing my work with your friends.`
 
   var sharelink = urlparams.get('sharelink') || ""
   var smallsharetext = urlparams.get('smallsharetext') || ""
@@ -475,8 +476,11 @@ function errorsend(){
     var jsonlist = oneTime
     var quantityval;
 
-    var successmsg = "Thank you for donating, I really appreciate that you have donated to me and I would like to thank you for that, in the meantime can you consider sharing my work with your friends, that would be very helpful"
-    var cancelmsg = "It seems that there was an error while donating, you can retry to donate or consider sharing my work with your friends and that would be very helpful"
+    var successmsg = `Thank you for donating,<br><br>
+I appreciate that you have donated to me and I would like to thank you for that,  can you also share my work with friends.<br><br>
+That would be very helpful`
+    var cancelmsg = `It looks like there was an error while donating<br><br>
+Could you retry to donate or consider sharing my work with friends and that would be very helpful`
 
   if(zeroDecimal.includes(curr))
        quantityval = parseInt(amount)

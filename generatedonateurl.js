@@ -1,3 +1,5 @@
+// use http://www.hemingwayapp.com/ and https://prowritingaid.com/ to make sentences easy and simple
+
 //Change the variables to what you want and Paste the code in console to get the donate url
 
 
@@ -12,16 +14,16 @@ var sharelink = "https://github.com/fawazahmed0/Latest-adb-fastboot-installer-fo
 var smallsharetext = "Easy Android USB drivers installer tool"
 
 // Text to place in share message
-var largesharetext = "Check this out, this tool makes the andriod usb drivers installation process seemless and easy"
+var largesharetext = "Check this out, this tool makes the Android usb drivers installation process easy"
 
 // Share button message to show when the button is collapse shown
 var sharebtnmsg = "Share the Latest adb fastboot drivers installer tool with your friends"
 
 // Message to show on page
-var mymsg = `Thanks for using my tool, this is Fawaz Ahmed(fawazahmed0) developer of Latest adb fastboot and usb drivers installer tool.<br><br> I made this tool, so that people who are new to Android rooting, twrp flashing etc, don't have to waste their time installing adb, fastboot and usb drivers.<br><br>
-This tool will automatically detect and install drivers specific to your phone, so you wouldn't face any issue. I try to keep this tool up to date<br><br>
-I spend so much time testing this tool in different windows version, so that you don't have to face any problem. <br><br>
-If you like my work consider donating a few bucks to me or atleast share this tool with your friends so they don't have to waste their time configuring usb drivers etc.`
+var mymsg = `Thanks for using my tool, I am Fawaz Ahmed (fawazahmed0) developer of this tool. I made this tool, so that people new to Android rooting, TWRP flashing etc, don’t have to waste time.<br><br>
+This tool will detect and install drivers specific to your phone, so you wouldn’t face any issue. I try to keep this tool up to date.
+I have spent so much time testing this tool in different windows versions, so you don’t have to face any problem.<br><br>
+If you like my work consider donating to me or at least share this tool with friends so they don’t have to waste time`
 
 
 
