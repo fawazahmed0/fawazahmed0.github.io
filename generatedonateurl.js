@@ -17,7 +17,7 @@ var smallsharetext = "Easy Android USB drivers installer tool"
 var largesharetext = "Check this out, this tool makes the Android usb drivers installation process easy"
 
 // Share button message to show when the button is collapse shown
-var sharebtnmsg = "Share the Latest adb fastboot drivers installer tool with your friends"
+var sharebtnmsg = "Share the Latest adb fastboot drivers installer tool with friends"
 
 // Message to show on page
 var mymsg = `Thanks for using my tool, I am Fawaz Ahmed (fawazahmed0) developer of this tool. I made this tool, so that people new to Android rooting, TWRP flashing etc, don’t have to waste time.<br><br>
