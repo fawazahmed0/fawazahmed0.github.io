@@ -31,11 +31,13 @@ layout: simple
   <div class="row">
 
     <div class="col-sm-3 col-lg-6 border-0 m-3">
-
-
-   <h5 class="row bg-light p-2 rounded" id="mymsg">
+      <div class="row bg-light p-2 rounded">
+      <h5>Hi friend,</h5>
+   <h5 id="mymsg">
 
    </h5>
+
+   </div>
    <div class="row">
 
 
@@ -91,13 +93,13 @@ layout: simple
 
 
             <a class="btn btn-primary btn-lg mx-3" data-toggle="collapse" href="#donatediv" role="button" aria-expanded="false" aria-controls="donatediv">
-             &#10084; Dosante
+             &#10084; Donate
             </a>
 
 
 
 
-            <a class="btn btn-primary btn-lg mx-3 mb-1" data-toggle="collapse" href="#sharediv" role="button" aria-expanded="false" aria-controls="sharediv">
+            <a class="btn btn-primary btn-lg mx-3 mb-1" id="sharebtn" data-toggle="collapse" href="#sharediv" role="button" aria-expanded="false" aria-controls="sharediv">
           &#10150; Share
             </a>
 
@@ -116,7 +118,7 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 
       <div class="collapse card card-body" id="sharediv">
 
-       <div class="card-title font-weight-bold pl-3">Share it with your friends</div>
+       <div id="sharebtnmsg" class="card-title font-weight-bold pl-3"></div>
 
 
 
@@ -442,6 +444,26 @@ function errorsend(){
   var stripe;
 
 
+  var currenturl = new URL(window.location)
+  var urlparams = currenturl.searchParams;
+
+    // Default message on page
+  var mymsg = 'This is Fawaz Ahmed(fawazahmed0), I have done numerous open source projects as my hobby, you can check that at my <a target="_blank" href="https://github.com/fawazahmed0">GitHub</a>, if you like my work consider donating a few bucks to me or atleast consider sharing my work with your friends.'
+
+  var sharelink = urlparams.get('sharelink') || ""
+  var smallsharetext = urlparams.get('smallsharetext') || ""
+  var largesharetext = urlparams.get('largesharetext') || ""
+  var sharebtnmsg = urlparams.get('sharebtnmsg') || "Share it with your friends"
+  // If parameter is null then use the above default message
+  mymsg = urlparams.get('mymsg') || mymsg
+
+  sharelink = encodeURIComponent(sharelink)
+
+  smallsharetext = encodeURIComponent(smallsharetext)
+
+  largesharetext = encodeURIComponent(largesharetext)
+
+
 
 
   function striperun(){
@@ -452,6 +474,9 @@ function errorsend(){
     var amount = $('#amt').val().trim();
     var jsonlist = oneTime
     var quantityval;
+
+    var successmsg = "Thank you for donating, I really appreciate that you have donated to me and I would like to thank you for that, in the meantime can you consider sharing my work with your friends, that would be very helpful"
+    var cancelmsg = "It seems that there was an error while donating, you can retry to donate or consider sharing my work with your friends, that would be very helpful"
 
   if(zeroDecimal.includes(curr))
        quantityval = parseInt(amount)
@@ -474,8 +499,8 @@ function errorsend(){
         // a successful payment.
         // Instead use one of the strategies described in
         // https://stripe.com/docs/payments/checkout/fulfillment
-        successUrl: 'https://serveonline.pp.ua',
-        cancelUrl: 'https://serveonline.pp.ua',
+        successUrl: 'https://fawazahmed0.github.io/donate.html?mymsg='+encodeURIComponent(successmsg)+'&sharelink='+sharelink+'&smallsharetext='+smallsharetext+'&largesharetext='+largesharetext+'&sharebtnmsg='+encodeURIComponent(sharebtnmsg),
+        cancelUrl: 'https://fawazahmed0.github.io/donate.html?mymsg='+encodeURIComponent(cancelmsg)+'&sharelink='+sharelink+'&smallsharetext='+smallsharetext+'&largesharetext='+largesharetext+'&sharebtnmsg='+encodeURIComponent(sharebtnmsg),
         submitType: 'donate',
       }).then(console.log).catch(console.error);
 
@@ -506,6 +531,9 @@ function errorsend(){
 
 
 window.onload = (event) => {
+
+// Add message on the page
+$('#mymsg').html(mymsg)
 
   stripe = Stripe('pk_live_2iSPDOnC126d0dnNPfESsaTk007wld2uGp');
 
@@ -588,47 +616,48 @@ return hasTouchScreen;
 ismobile()
 
 
+if(sharelink != ""){
 
-var sharelink = "https://github.com/fawazahmed0/Latest-adb-fastboot-installer-for-windows"
-sharelink = encodeURIComponent(sharelink)
-var smalltext = "Easy Android USB drivers installer tool"
-smalltext = encodeURIComponent(smalltext)
-var largetext = "Check this out, this tool makes the andriod usb drivers installation process seemless and easy"
-largetext = encodeURIComponent(largetext)
+// Share button message
+$('#sharebtnmsg').html(sharebtnmsg)
 
 // Attaching the buttons using javascript, so in future just have to change the above variables
-$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" href="https://www.facebook.com/sharer/sharer.php?u='+sharelink+'&quote='+largetext+'" target="_blank" type="button">Facebook</a>' );
+$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" href="https://www.facebook.com/sharer/sharer.php?u='+sharelink+'&quote='+largesharetext+'" target="_blank" type="button">Facebook</a>' );
 
-$( "#sharediv" ).append( '<a class="btn btn-success mb-1" id="whatsappbtn" href="https://web.whatsapp.com/send?text='+largetext+'%20'+sharelink+'" target="_blank" type="button">WhatsApp</a>' );
+$( "#sharediv" ).append( '<a class="btn btn-success mb-1" id="whatsappbtn" href="https://web.whatsapp.com/send?text='+largesharetext+'%20'+sharelink+'" target="_blank" type="button">WhatsApp</a>' );
 
-$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" href="https://twitter.com/intent/tweet?text='+largetext+'%3A%20'+sharelink+'" target="_blank" type="button">Twitter</a>' );
+$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" href="https://twitter.com/intent/tweet?text='+largesharetext+'%3A%20'+sharelink+'" target="_blank" type="button">Twitter</a>' );
 
-$( "#sharediv" ).append( '<a class="btn btn-warning mb-1" href="mailto:?subject='+smalltext+'&body='+largetext+'%20'+sharelink+'" target="_blank" type="button">Email</a>' );
+$( "#sharediv" ).append( '<a class="btn btn-warning mb-1" href="mailto:?subject='+smallsharetext+'&body='+largesharetext+'%20'+sharelink+'" target="_blank" type="button">Email</a>' );
 
-$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" id="telegrambtn" href="https://t.me/share/url?url='+sharelink+'&text='+largetext+'" target="_blank" type="button">Telegram</a>' );
+$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" id="telegrambtn" href="https://t.me/share/url?url='+sharelink+'&text='+largesharetext+'" target="_blank" type="button">Telegram</a>' );
 
-$( "#sharediv" ).append( '<a class="btn btn-danger mb-1" href="https://www.reddit.com/submit?url='+sharelink+'&title='+largetext+'" target="_blank" type="button">Reddit</a>' );
+$( "#sharediv" ).append( '<a class="btn btn-danger mb-1" href="https://www.reddit.com/submit?url='+sharelink+'&title='+largesharetext+'" target="_blank" type="button">Reddit</a>' );
 
-$( "#sharediv" ).append( '<a class="btn btn-warning mb-1" id="weibobtn" href="http://service.weibo.com/share/share.php?url='+sharelink+'&appkey=&title='+largetext+'" target="_blank" type="button">Weibo</a>' );
+$( "#sharediv" ).append( '<a class="btn btn-warning mb-1" id="weibobtn" href="http://service.weibo.com/share/share.php?url='+sharelink+'&appkey=&title='+largesharetext+'" target="_blank" type="button">Weibo</a>' );
 
 $( "#sharediv" ).append( '<a class="btn btn-dark mb-1" href="http://www.tumblr.com/share/link?url='+sharelink+'" target="_blank" type="button">Tumblr</a>' );
 
 
 if(mobile){
-$('#whatsappbtn').attr("href","whatsapp://send?text="+largetext+"%20"+sharelink)
+$('#whatsappbtn').attr("href","whatsapp://send?text="+largesharetext+"%20"+sharelink)
 
- $('#telegrambtn').attr("href","tg://msg?url="+sharelink+"&text="+largetext)
+ $('#telegrambtn').attr("href","tg://msg?url="+sharelink+"&text="+largesharetext)
 
  $('#weibobtn').remove()
 
 
 }
 
+}
+else{
+// Hide share button if no shareurl present
+$('#sharebtn').hide()
 
-// My message specific to tool
-var mymsg = 'If you don’t know for sure, guessing is not the next best thing. According to a 2017 study by the folks at American Express, a person from the U.S. is going to tell an average of 15 people about a bad customer service experience. Even worse, research by thinkJar’s CEO, Esteban Kolsky, found that only 1 out of 26 unhappy customers complain. The rest will just leave.'
+}
 
-$('#mymsg').text(mymsg)
+// $('#mymsg').text(mymsg)
+
 
 
 
