@@ -30,7 +30,7 @@ layout: simple
 
   <div class="row">
 
-    <div class="col-3 border-0 m-3">
+    <div class="col-sm-3 col-lg-6 border-0 m-3">
 
 
    <h5 class="row bg-light p-2 rounded" id="mymsg">
@@ -97,7 +97,7 @@ layout: simple
 
 
 
-            <a class="btn btn-primary btn-lg mx-3" data-toggle="collapse" href="#sharediv" role="button" aria-expanded="false" aria-controls="sharediv">
+            <a class="btn btn-primary btn-lg mx-3 mb-1" data-toggle="collapse" href="#sharediv" role="button" aria-expanded="false" aria-controls="sharediv">
           &#10150; Share
             </a>
 
@@ -114,7 +114,7 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 -->
 
 
-      <div class="collapse mt-5 card card-body" id="sharediv">
+      <div class="collapse card card-body" id="sharediv">
 
        <div class="card-title font-weight-bold pl-3">Share it with your friends</div>
 
@@ -597,7 +597,7 @@ var largetext = "Check this out, this tool makes the andriod usb drivers install
 largetext = encodeURIComponent(largetext)
 
 // Attaching the buttons using javascript, so in future just have to change the above variables
-$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" href="https://www.facebook.com/sharer/sharer.php?u='+sharelink+'" target="_blank" type="button">Facebook</a>' );
+$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" href="https://www.facebook.com/sharer/sharer.php?u='+sharelink+'&quote='+largetext+'" target="_blank" type="button">Facebook</a>' );
 
 $( "#sharediv" ).append( '<a class="btn btn-success mb-1" id="whatsappbtn" href="https://web.whatsapp.com/send?text='+largetext+'%20'+sharelink+'" target="_blank" type="button">WhatsApp</a>' );
 
@@ -607,7 +607,7 @@ $( "#sharediv" ).append( '<a class="btn btn-warning mb-1" href="mailto:?subject=
 
 $( "#sharediv" ).append( '<a class="btn btn-primary mb-1" id="telegrambtn" href="https://t.me/share/url?url='+sharelink+'&text='+largetext+'" target="_blank" type="button">Telegram</a>' );
 
-$( "#sharediv" ).append( '<a class="btn btn-danger mb-1" href="https://www.reddit.com/submit?url='+sharelink+'" target="_blank" type="button">Reddit</a>' );
+$( "#sharediv" ).append( '<a class="btn btn-danger mb-1" href="https://www.reddit.com/submit?url='+sharelink+'&title='+largetext+'" target="_blank" type="button">Reddit</a>' );
 
 $( "#sharediv" ).append( '<a class="btn btn-warning mb-1" id="weibobtn" href="http://service.weibo.com/share/share.php?url='+sharelink+'&appkey=&title='+largetext+'" target="_blank" type="button">Weibo</a>' );
 
