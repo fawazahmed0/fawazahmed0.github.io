@@ -49,7 +49,7 @@ layout: simple
    <div class="collapse" id="issue">
   <form id="issueform" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSd9agrjOEE0khzfeaBhdH18ADEm2-kvy6Mkv8aFSBpgtcHt8A/formResponse" method="post" target="hidden_iframe" class="form-group card card-body">
 
-<textarea id="issuetext" type="text" placeholder="Let me know what issue you faced and also share your contact email if possible" name="entry.1071744889" rows=5></textarea>
+<textarea id="issuetext" type="text" placeholder="Let me know what issue you faced and also share your contact email if possible" name="entry.1071744889" rows=5 minlength="1" required></textarea>
 
 
       <button id="issuesend" class="btn btn-primary float-right" type="button" onclick="errorsend();">Send</button>
@@ -405,7 +405,10 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 function errorsend(){
 
   // When issue send is clicked, collapse and then show the toast message
-
+// https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/reportValidity#Browser_compatibility
+// https://googlechrome.github.io/samples/report-validity/
+// https://stackoverflow.com/questions/17550317/how-to-manually-show-a-html5-validation-message-from-a-javascript-function
+if(document.querySelector('#issueform').reportValidity()){
 
     $('#issue').collapse('hide')
 
@@ -419,7 +422,7 @@ function errorsend(){
         $('#issueform').submit()
 })
 
-
+}
 }
 
 
