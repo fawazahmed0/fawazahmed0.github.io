@@ -76,10 +76,10 @@ PLATFORMS
 
 DEPENDENCIES
   jekyll (~> 4.0.0)
-  jekyll-feed (~> 0.12)
-  jekyll-seo-tag
-  jekyll-sitemap
-  minima (~> 2.5)
+  jekyll-feed (~> 0.13, >= 0.13.0)
+  jekyll-seo-tag (>= 2.6.1)
+  jekyll-sitemap (>= 1.4.0)
+  minima (~> 2.5, >= 2.5.1)
   tzinfo (~> 1.2)
   tzinfo-data
   wdm (~> 0.1.1)
