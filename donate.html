@@ -427,7 +427,10 @@ if(document.querySelector('#issueform').reportValidity()){
 
 
   // Code for stripe
-
+    // This array zeroDecimal is not being used in this code, it's just for reference for testing etc
+    // While creating product prices this array is considered, as for zeroDecimal jpy , 1 will create 1 jpy and for non zeroDecimal
+    // curreny usd 1 will create 0.01 price value
+    // Refer: https://github.com/fawazahmed0/stripe-checkout-generator
     var zeroDecimal = ["bif","clp","djf","gnf","jpy","kmf","krw","mga","pyg","rwf","vnd","vuv","xaf","xof","xpf"]
 
     var allCurrency = ["usd","eur","gbp","chf","aud","nzd","cny","jpy","cad","sek","zar","inr","aed","afn","all","amd","ang","aoa","ars","awg","azn","bam","bbd","bdt","bgn","bif","bmd","bnd","bob","brl","bsd","bwp","bzd","cdf","clp","cop","crc","cve","czk","djf","dkk","dop","dzd","egp","etb","fjd","fkp","gel","gip","gmd","gnf","gtq","gyd","hkd","hnl","hrk","htg","huf","idr","ils","isk","jmd","kes","kgs","khr","kmf","krw","kyd","kzt","lak","lbp","lkr","lrd","lsl","mad","mdl","mga","mkd","mmk","mnt","mop","mro","mur","mvr","mwk","mxn","myr","mzn","nad","ngn","nio","nok","npr","pab","pen","pgk","php","pkr","pln","pyg","qar","ron","rsd","rub","rwf","sar","sbd","scr","sgd","shp","sll","sos","srd","std","szl","thb","tjs","top","try","ttd","twd","tzs","uah","ugx","uyu","uzs","vnd","vuv","wst","xaf","xcd","xof","xpf","yer","zmw"]
