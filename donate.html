@@ -199,7 +199,7 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
                     </div>
 
                     <div class="col-6 border-0">
-                      <input id="amt" type="number" min="0.01" step="0.01" class="form-control" placeholder="Enter Amount" required>
+                      <input id="amt" type="number" min="1" step="1" class="form-control" placeholder="Enter Amount" required>
                     </div>
                     <div class="col-3 border-0">
                       <button type="submit" class="btn btn-primary">Donate</button>
@@ -440,9 +440,9 @@ if(document.querySelector('#issueform').reportValidity()){
   }
 
   var oneTime, multiTime;
-  fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/onetime.json').then(response => response.json()).then(data => oneTime=data).catch(console.error);
+  fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/onetime1value.json').then(response => response.json()).then(data => oneTime=data).catch(console.error);
 
-  fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/multitime.json').then(response => response.json()).then(data => multiTime=data).catch(console.error);
+  fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/multitime1value.json').then(response => response.json()).then(data => multiTime=data).catch(console.error);
 
   var stripe;
 
@@ -478,7 +478,7 @@ if(document.querySelector('#issueform').reportValidity()){
     var mode = $('input[name="occurence"]:checked').val().trim();
     var amount = $('#amt').val().trim();
     var jsonlist = oneTime
-    var quantityval;
+    var quantityval = parseInt(amount);
 
     var successmsg = `Thank you for donating,<br><br>
 I appreciate that you have donated to me and I would like to thank you for that,  can you also share my work with friends.<br><br>
@@ -486,12 +486,6 @@ That would be very helpful`
     var cancelmsg = `It looks like there was an error while donating<br><br>
 Could you retry to donate or consider sharing my work with friends and that would be very helpful`
 
-  if(zeroDecimal.includes(curr))
-       quantityval = parseInt(amount)
-  else if(curr == "ugx")
-       quantityval = parseInt(amount)*100
-  else
-       quantityval = parseInt(amount*100)
 
 
     if(mode == 'subscription')
