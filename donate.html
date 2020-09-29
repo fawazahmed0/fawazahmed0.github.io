@@ -92,7 +92,7 @@ layout: simple
 
 
 
-            <a class="btn btn-primary btn-lg mx-3" data-toggle="collapse" href="#donatediv" role="button" aria-expanded="false" aria-controls="donatediv">
+            <a class="btn btn-primary btn-lg mx-3" id="donatebtn" data-toggle="collapse" href="#donatediv" role="button" aria-expanded="false" aria-controls="donatediv">
              &#10084; Donate
             </a>
 
@@ -462,6 +462,7 @@ if(document.querySelector('#issueform').reportValidity()){
   var smallsharetext = urlparams.get('smallsharetext') || ""
   var largesharetext = urlparams.get('largesharetext') || ""
   var sharebtnmsg = urlparams.get('sharebtnmsg') || "Share it with your friends"
+  var nodonatebtn = urlparams.get('nodonatebtn') || ""
   // If parameter is null then use the above default message
   mymsg = urlparams.get('mymsg') || mymsg
 
@@ -660,6 +661,10 @@ else{
 $('#sharebtn').hide()
 
 }
+
+// Hide Donate button if nodonatebtn has any value in it
+if(nodonatebtn != "")
+$('#donatebtn').hide()
 
 // $('#mymsg').text(mymsg)
 

@@ -7,6 +7,11 @@
 var testurl
 // testurl = "http://127.0.0.1:4000/donate.html"
 
+// No Donate btn
+// Give it a value incase you don't want donate button to be shown in the page, this is useful when you
+// only want sharebutton to be shown
+var nodonatebtn = "";
+
 // Link to place in share buttons
 var sharelink = "https://github.com/fawazahmed0/Latest-adb-fastboot-installer-for-windows"
 
@@ -32,9 +37,10 @@ sharelink = encodeURIComponent(sharelink)
 smallsharetext = encodeURIComponent(smallsharetext)
 largesharetext = encodeURIComponent(largesharetext)
 sharebtnmsg = encodeURIComponent(sharebtnmsg)
+nodonatebtn = encodeURIComponent(nodonatebtn)
 mymsg = encodeURIComponent(mymsg)
 url = testurl || "https://fawazahmed0.github.io/donate.html"
 
-var fullurl = url+'?mymsg='+mymsg+'&sharelink='+sharelink+'&smallsharetext='+smallsharetext+'&largesharetext='+largesharetext+'&sharebtnmsg='+sharebtnmsg;
+var fullurl = url+'?mymsg='+mymsg+'&sharelink='+sharelink+'&smallsharetext='+smallsharetext+'&largesharetext='+largesharetext+'&sharebtnmsg='+sharebtnmsg+'&nodonatebtn='+nodonatebtn;
 
 console.log(fullurl)
