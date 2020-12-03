@@ -28,7 +28,20 @@ var sharebtnmsg = "Share the Latest adb fastboot drivers installer tool with fri
 var mymsg = `Thanks for using my tool, I am Fawaz Ahmed (fawazahmed0) developer of this tool. I made this tool, so that people new to Android rooting, TWRP flashing etc, don’t have to waste time.<br><br>
 This tool will detect and install drivers specific to your phone, so you wouldn’t face any issue. I try to keep this tool up to date.
 I have spent so much time testing this tool in different windows versions, so you don’t have to face any problem.<br><br>
-If you like my work consider donating to me or at least share this tool with friends so they don’t have to waste time`
+If you like my work consider donating to me or at least share this tool with friends so they don’t have to waste time<br><br>
+I would like to thank all the Supporters who have donated to this tool:<br><br>
+Mickael Catherine
+Christopher Vaughan<br>
+Nuno Pinho<br>
+Robert Edwards<br>
+Antonio Gobbin<br>
+Hamza Elouacef<br>
+None<br>
+Edivaldo A Pereira<br>
+Wallace G. Sanders<br>
+Peter Bergonzi<br>
+
+`
 
 
 
