@@ -30,7 +30,7 @@ This tool will detect and install drivers specific to your phone, so you wouldn�
 I have spent so much time testing this tool in different windows versions, so you don’t have to face any problem.<br><br>
 If you like my work consider donating to me or at least share this tool with friends so they don’t have to waste time<br><br>
 I would like to thank all the Supporters who have donated to this tool:<br><br>
-Mickael Catherine
+Mickael Catherine<br>
 Christopher Vaughan<br>
 Nuno Pinho<br>
 Robert Edwards<br>
