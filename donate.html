@@ -193,9 +193,8 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
                   <div class="form-row">
                     <div class="col-3 border-0">
 
-                      <input class="form-control" list="currencylist" name="currency" id="currency" placeholder="Currency" required>
-                      <datalist id="currencylist">
-                      </datalist>
+                      <select  class="form-control" id="currencylist">
+                      </select>
                     </div>
 
                     <div class="col-6 border-0">
@@ -439,7 +438,7 @@ if(document.querySelector('#issueform').reportValidity()){
 
   for(curr of allCurrency){
 
-    $('#currencylist').append('<option value="'+curr.toUpperCase()+'"></option>')
+    $('#currencylist').append('<option value="'+curr.toUpperCase()+'">'+curr.toUpperCase()+'</option>')
   }
 
   var oneTime, multiTime;
@@ -478,7 +477,7 @@ if(document.querySelector('#issueform').reportValidity()){
   function striperun(){
 
 
-    var curr = $('#currency').val().trim().toLowerCase()
+    var curr = $('#currencylist').val().trim().toLowerCase()
     var mode = $('input[name="occurence"]:checked').val().trim();
     var amount = $('#amt').val().trim();
     var jsonlist = oneTime
