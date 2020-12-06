@@ -41,6 +41,7 @@ Edivaldo A Pereira<br>
 Wallace G. Sanders<br>
 Peter Bergonzi<br>
 Áron Somodi<br>
+Antonio Banders<br>
 
 `
 
