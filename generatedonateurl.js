@@ -43,6 +43,7 @@ Peter Bergonzi<br>
 Áron Somodi<br>
 Antonio Banders<br>
 vittorio noca<br>
+Manuel De Diego Prato<br>
 
 `
 
