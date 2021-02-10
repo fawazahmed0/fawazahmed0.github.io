@@ -44,6 +44,7 @@ Peter Bergonzi<br>
 Antonio Banders<br>
 vittorio noca<br>
 Manuel De Diego Prato<br>
+Justin Kennedy<br>
 
 `
 
