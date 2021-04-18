@@ -35,7 +35,7 @@ Christopher Vaughan<br>
 Nuno Pinho<br>
 Robert Edwards<br>
 Antonio Gobbin<br>
-Hamza Elouacef<br>
+Hamza E.<br>
 None<br>
 Edivaldo A Pereira<br>
 Wallace G. Sanders<br>
