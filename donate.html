@@ -6,9 +6,9 @@ layout: simple
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
-<script src="https://js.stripe.com/v3/"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="https://js.stripe.com/v3/"></script>
 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" ></iframe>
 
 
@@ -425,54 +425,6 @@ if(document.querySelector('#issueform').reportValidity()){
 }
 
 
-  // Code for stripe
-    // This array zeroDecimal is not being used in this code, it's just for reference for testing etc
-    // While creating product prices this array is considered, as for zeroDecimal jpy , 1 will create 1 jpy and for non zeroDecimal
-    // curreny usd 1 will create 0.01 price value
-    // Refer: https://github.com/fawazahmed0/stripe-checkout-generator
-    var zeroDecimal = ["bif","clp","djf","gnf","jpy","kmf","krw","mga","pyg","rwf","vnd","vuv","xaf","xof","xpf"]
-
-    var allCurrency = ["usd","eur","gbp","chf","aud","nzd","cny","jpy","cad","sek","zar","inr","aed","afn","all","amd","ang","aoa","ars","awg","azn","bam","bbd","bdt","bgn","bif","bmd","bnd","bob","brl","bsd","bwp","bzd","cdf","clp","cop","crc","cve","czk","djf","dkk","dop","dzd","egp","etb","fjd","fkp","gel","gip","gmd","gnf","gtq","gyd","hkd","hnl","hrk","htg","huf","idr","ils","isk","jmd","kes","kgs","khr","kmf","krw","kyd","kzt","lak","lbp","lkr","lrd","lsl","mad","mdl","mga","mkd","mmk","mnt","mop","mro","mur","mvr","mwk","mxn","myr","mzn","nad","ngn","nio","nok","npr","pab","pen","pgk","php","pkr","pln","pyg","qar","ron","rsd","rub","rwf","sar","sbd","scr","sgd","shp","sll","sos","srd","std","szl","thb","tjs","top","try","ttd","twd","tzs","uah","ugx","uyu","uzs","vnd","vuv","wst","xaf","xcd","xof","xpf","yer","zmw"]
-
-  //  var decimalCurrency = allCurrency.filter(currency => !zeroDecimal.includes(currency))
-
-  for(curr of allCurrency){
-
-    $('#currencylist').append('<option value="'+curr.toUpperCase()+'">'+curr.toUpperCase()+'</option>')
-  }
-
-  var oneTime, multiTime;
-  fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/onetime1value.json').then(response => response.json()).then(data => oneTime=data).catch(console.error);
-
-  fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/multitime1value.json').then(response => response.json()).then(data => multiTime=data).catch(console.error);
-
-  var stripe;
-
-
-  var currenturl = new URL(window.location)
-  var urlparams = currenturl.searchParams;
-
-    // Default message on page
-  var mymsg = `This is Fawaz Ahmed (fawazahmed0), I have done many open source projects as part of my religion, because God says:<br><br>
-  <b><em>Help each other in goodness and piety, but do not cooperate in wrong and hurting others. And fear God, Truly, God is severe in punishment - Quran 5:2</em><br><br></b>
-   If you like my work consider donating a few bucks to me.`
-
-  var sharelink = urlparams.get('sharelink') || ""
-  var smallsharetext = urlparams.get('smallsharetext') || ""
-  var largesharetext = urlparams.get('largesharetext') || ""
-  var sharebtnmsg = urlparams.get('sharebtnmsg') || "Share it with your friends"
-  var nodonatebtn = urlparams.get('nodonatebtn') || ""
-  // If parameter is null then use the above default message
-  mymsg = urlparams.get('mymsg') || mymsg
-
-  sharelink = encodeURIComponent(sharelink)
-
-  smallsharetext = encodeURIComponent(smallsharetext)
-
-  largesharetext = encodeURIComponent(largesharetext)
-
-
-
 
   function striperun(){
 
@@ -527,15 +479,60 @@ Could you retry to donate or consider sharing my work with friends and that woul
 
 
 
+  // Code for stripe
+    // This array zeroDecimal is not being used in this code, it's just for reference for testing etc
+    // While creating product prices this array is considered, as for zeroDecimal jpy , 1 will create 1 jpy and for non zeroDecimal
+    // curreny usd 1 will create 0.01 price value
+    // Refer: https://github.com/fawazahmed0/stripe-checkout-generator
+    var zeroDecimal = ["bif","clp","djf","gnf","jpy","kmf","krw","mga","pyg","rwf","vnd","vuv","xaf","xof","xpf"]
+
+    var allCurrency = ["usd","eur","gbp","chf","aud","nzd","cny","jpy","cad","sek","zar","inr","aed","afn","all","amd","ang","aoa","ars","awg","azn","bam","bbd","bdt","bgn","bif","bmd","bnd","bob","brl","bsd","bwp","bzd","cdf","clp","cop","crc","cve","czk","djf","dkk","dop","dzd","egp","etb","fjd","fkp","gel","gip","gmd","gnf","gtq","gyd","hkd","hnl","hrk","htg","huf","idr","ils","isk","jmd","kes","kgs","khr","kmf","krw","kyd","kzt","lak","lbp","lkr","lrd","lsl","mad","mdl","mga","mkd","mmk","mnt","mop","mro","mur","mvr","mwk","mxn","myr","mzn","nad","ngn","nio","nok","npr","pab","pen","pgk","php","pkr","pln","pyg","qar","ron","rsd","rub","rwf","sar","sbd","scr","sgd","shp","sll","sos","srd","std","szl","thb","tjs","top","try","ttd","twd","tzs","uah","ugx","uyu","uzs","vnd","vuv","wst","xaf","xcd","xof","xpf","yer","zmw"]
+
+  //  var decimalCurrency = allCurrency.filter(currency => !zeroDecimal.includes(currency))
+
+  var oneTime, multiTime;
+  fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/onetime1value.json').then(response => response.json()).then(data => oneTime=data).catch(console.error);
+
+  fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/multitime1value.json').then(response => response.json()).then(data => multiTime=data).catch(console.error);
+
+  var stripe, mymsg, sharelink, smallsharetext, largesharetext,sharebtnmsg,nodonatebtn;
 
 
 
+function ready() {
+
+  
+
+  for(curr of allCurrency){
+
+    $('#currencylist').append('<option value="'+curr.toUpperCase()+'">'+curr.toUpperCase()+'</option>')
+  }
+
+
+  var currenturl = new URL(window.location)
+  var urlparams = currenturl.searchParams;
+
+    // Default message on page
+   mymsg = `This is Fawaz Ahmed (fawazahmed0), I have done many open source projects as part of my religion, because God says:<br><br>
+  <b><em>Help each other in goodness and piety, but do not cooperate in wrong and hurting others. And fear God, Truly, God is severe in punishment - Quran 5:2</em><br><br></b>
+   If you like my work consider donating a few bucks to me.`
+
+   sharelink = urlparams.get('sharelink') || ""
+   smallsharetext = urlparams.get('smallsharetext') || ""
+   largesharetext = urlparams.get('largesharetext') || ""
+   sharebtnmsg = urlparams.get('sharebtnmsg') || "Share it with your friends"
+   nodonatebtn = urlparams.get('nodonatebtn') || ""
+  // If parameter is null then use the above default message
+  mymsg = urlparams.get('mymsg') || mymsg
+
+  sharelink = encodeURIComponent(sharelink)
+
+  smallsharetext = encodeURIComponent(smallsharetext)
+
+  largesharetext = encodeURIComponent(largesharetext)
 
 
 
-
-
-window.onload = (event) => {
 
 // Add message on the page
 $('#mymsg').html(mymsg)
@@ -676,5 +673,7 @@ $('#donatebtn').hide()
 
 
 }
+
+document.addEventListener("DOMContentLoaded", ready);
 
 </script>

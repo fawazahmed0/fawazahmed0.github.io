@@ -10,11 +10,11 @@ GEM
       http_parser.rb (~> 0.6.0)
     eventmachine (1.2.7)
     eventmachine (1.2.7-x64-mingw32)
-    ffi (1.13.1)
-    ffi (1.13.1-x64-mingw32)
+    ffi (1.15.0)
+    ffi (1.15.0-x64-mingw32)
     forwardable-extended (2.6.0)
     http_parser.rb (0.6.0)
-    i18n (1.8.5)
+    i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jekyll (4.2.0)
       addressable (~> 2.4)
@@ -23,7 +23,7 @@ GEM
       i18n (~> 1.0)
       jekyll-sass-converter (~> 2.0)
       jekyll-watch (~> 2.0)
-      kramdown (>= 2.3.1)
+      kramdown (~> 2.3)
       kramdown-parser-gfm (~> 1.0)
       liquid (~> 4.0)
       mercenary (~> 0.4.0)
@@ -46,7 +46,7 @@ GEM
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     liquid (4.0.3)
-    listen (3.3.3)
+    listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     mercenary (0.4.0)
@@ -75,6 +75,7 @@ GEM
       tzinfo (>= 1.0.0)
     unicode-display_width (1.7.0)
     wdm (0.1.1)
+    webrick (1.7.0)
 
 PLATFORMS
   ruby
@@ -89,6 +90,7 @@ DEPENDENCIES
   tzinfo (~> 2.0)
   tzinfo-data
   wdm (~> 0.1.1)
+  webrick (~> 1.7)
 
 BUNDLED WITH
-   2.1.4
+   2.2.17
