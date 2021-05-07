@@ -462,8 +462,9 @@ Could you retry to donate or consider sharing my work with friends and that woul
 
 
   function striperun() {
+  
 
-    document.querySelector('#stripebtn').innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`
+    document.querySelector('#stripebtn').innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`;
 
     var curr = $('#currencyliststripe').val().trim().toLowerCase()
     var mode = $('input[name="occurencestripe"]:checked').val().trim();
@@ -492,7 +493,7 @@ Could you retry to donate or consider sharing my work with friends and that woul
     }).then(console.log).catch(console.error);
 
 
-    document.querySelector('#stripebtn').innerHTML = 'Donate'
+    document.querySelector('#stripebtn').innerHTML = 'Donate';
   }
 
 
