@@ -9,8 +9,14 @@ layout: simple
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
 <script defer src="https://js.stripe.com/v3/"></script>
+<script id='paypalscript' defer src="https://www.paypal.com/sdk/js?client-id=Ablm-UfllPQaq5JsJkxc3vtVi9QTjN894xuQ_VfJcklY_DiaIDBWopDa7dYwJ3uuYOuXUwaqNahbc8JI&currency=USD"> // Replace YOUR_CLIENT_ID with your sandbox client ID
+</script>
 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" ></iframe>
 
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script defer src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
 
 
 
@@ -145,18 +151,19 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
               <h2 class="mb-0">
 
                 <div class="btn-group" role="group" aria-label="currency">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsecardpaypal" aria-expanded="true" aria-controls="collapsecardpaypal">PayPal</button>
 
+            
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsecardstripe" aria-expanded="true" aria-controls="collapsecardstripe">Stripe</button>
 
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsecard" aria-expanded="true" aria-controls="collapsecard">Stripe(Card Payment)</button>
-
-                  <a class="btn btn-link" href="https://paypal.me/fawazahmed0" target="_blank" type="button">PayPal</a>
+                 
                 </div>
 
 
               </h2>
             </div>
 
-            <div id="collapsecard" class="collapse" aria-labelledby="headingOne" data-parent="#accordioncard">
+            <div id="collapsecardstripe" class="collapse" aria-labelledby="headingOne" data-parent="#accordioncard">
               <div class="card-body">
 
 
@@ -171,7 +178,7 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 
                     <div class="form-check form-check-inline">
 
-                      <input class="form-check-input" type="radio" name="occurence" id="onetime1" value="payment" checked>
+                      <input class="form-check-input" type="radio" name="occurencestripe" id="onetime1" value="payment" checked>
                       <label class="form-check-label" for="payment">
                         One Time
                       </label>
@@ -182,7 +189,7 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 
                     <div class="form-check form-check-inline">
 
-                      <input class="form-check-input" type="radio" name="occurence" id="monthly1" value="subscription">
+                      <input class="form-check-input" type="radio" name="occurencestripe" id="monthly1" value="subscription">
                       <label class="form-check-label" for="subscription">
                         Monthly
                       </label>
@@ -191,17 +198,17 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
                     </div>
                   </div>
                   <div class="form-row">
-                    <div class="col-3 border-0">
+                    <div class="col-5 border-0">
 
-                      <select  class="form-control" id="currencylist">
+                      <select   class="js-example-basic-single form-select" id="currencyliststripe">
                       </select>
                     </div>
 
-                    <div class="col-6 border-0">
-                      <input id="amt" type="number" min="1" step="1" class="form-control" placeholder="Enter Amount" required>
+                    <div class="col-4 border-0">
+                      <input id="amtstripe" type="number" min="1" step="1" class="form-control" placeholder="Enter Amount" required>
                     </div>
                     <div class="col-3 border-0">
-                      <button type="submit" class="btn btn-primary">Donate</button>
+                      <button type="submit" id='stripebtn' class="btn btn-primary">Donate</button>
                     </div>
 
 
@@ -220,6 +227,91 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 
               </div>
             </div>
+
+
+            <div id="collapsecardpaypal" class="collapse" aria-labelledby="headingOne" data-parent="#accordioncard">
+              <div class="card-body">
+
+
+
+
+
+
+
+                <form id='paypalform' onsubmit="return false;" onchange='checkAndEnableBtn();'>
+                  <div class="form-group">
+
+
+                    <div class="form-check form-check-inline">
+
+                      <input class="form-check-input" type="radio" name="occurencepaypal" id="onetime2" value="payment" onchange="setPaypalButtons()" checked>
+                      <label class="form-check-label" for="payment">
+                        One Time
+                      </label>
+
+
+                    </div>
+
+
+                    <div class="form-check form-check-inline">
+
+                      <input class="form-check-input" type="radio" name="occurencepaypal" id="monthly2" onchange="setPaypalButtons()" value="subscription">
+                      <label class="form-check-label" for="subscription">
+                        Monthly
+                      </label>
+
+
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-5 border-0">
+
+                      <select   class="js-example-basic-single form-select" id="currencylistpaypal" onchange="setPaypalButtons()">
+                      </select>
+                    </div>
+
+                    <div class="col-7 border-0">
+                      <input id="amtpaypal" type="number" min="1" step="1" class="form-control" placeholder="Enter Amount" required>
+                    </div>
+ 
+
+                    <div class="container m-3">
+                      <div class="row">
+                        <div class="col-2">
+                       
+                        </div>
+                       
+                          <div class="col" id="paypal-button-container"></div>
+                        
+                        
+                        <div class="col-2">
+                 
+                        </div>
+                      </div>
+                    </div>
+
+                  
+
+                  </div>
+                </form>
+
+
+
+
+
+
+
+
+
+              </div>
+            </div>
+
+
+
+
+
+
+
           </div>
         </div>
 
@@ -424,22 +516,22 @@ if(document.querySelector('#issueform').reportValidity()){
 }
 }
 
-
-
-  function striperun(){
-
-
-    var curr = $('#currencylist').val().trim().toLowerCase()
-    var mode = $('input[name="occurence"]:checked').val().trim();
-    var amount = $('#amt').val().trim();
-    var jsonlist = oneTime
-    var quantityval = parseInt(amount);
-
-    var successmsg = `Thank you for donating,<br><br>
+var successmsg = `Thank you for donating,<br><br>
 I appreciate that you have donated to me and I would like to thank you for that,  can you also share my work with friends.<br><br>
 That would be very helpful`
     var cancelmsg = `It looks like there was an error while donating<br><br>
 Could you retry to donate or consider sharing my work with friends and that would be very helpful`
+
+
+  function striperun(){
+
+    document.querySelector('#stripebtn').innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`
+
+    var curr = $('#currencyliststripe').val().trim().toLowerCase()
+    var mode = $('input[name="occurencestripe"]:checked').val().trim();
+    var amount = $('#amtstripe').val().trim();
+    var jsonlist = oneTime
+    var quantityval = parseInt(amount);
 
 
 
@@ -456,17 +548,45 @@ Could you retry to donate or consider sharing my work with friends and that woul
         // a successful payment.
         // Instead use one of the strategies described in
         // https://stripe.com/docs/payments/checkout/fulfillment
-        successUrl: 'https://fawazahmed0.github.io/donate.html?mymsg='+encodeURIComponent(successmsg)+'&sharelink='+sharelink+'&smallsharetext='+smallsharetext+'&largesharetext='+largesharetext+'&sharebtnmsg='+encodeURIComponent(sharebtnmsg),
-        cancelUrl: 'https://fawazahmed0.github.io/donate.html?mymsg='+encodeURIComponent(cancelmsg)+'&sharelink='+sharelink+'&smallsharetext='+smallsharetext+'&largesharetext='+largesharetext+'&sharebtnmsg='+encodeURIComponent(sharebtnmsg),
+        successUrl: successURL,
+        cancelUrl: cancelURL,
         submitType: 'donate',
       }).then(console.log).catch(console.error);
 
 
-
+      document.querySelector('#stripebtn').innerHTML = 'Donate'
   }
 
 
 
+
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent
+// Check whether the device is mobile
+function ismobile(){
+var hasTouchScreen = false;
+if ("maxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.maxTouchPoints > 0;
+} else if ("msMaxTouchPoints" in navigator) {
+    hasTouchScreen = navigator.msMaxTouchPoints > 0;
+} else {
+    var mQ = window.matchMedia && matchMedia("(pointer:coarse)");
+    if (mQ && mQ.media === "(pointer:coarse)") {
+        hasTouchScreen = !!mQ.matches;
+    } else if ('orientation' in window) {
+        hasTouchScreen = true; // deprecated, but good fallback
+    } else {
+        // Only as a last resort, fall back to user agent sniffing
+        var UA = navigator.userAgent;
+        hasTouchScreen = (
+            /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
+            /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
+        );
+    }
+}
+
+return hasTouchScreen;
+
+}
 
 
 
@@ -488,7 +608,12 @@ Could you retry to donate or consider sharing my work with friends and that woul
 
     var allCurrency = ["usd","eur","gbp","chf","aud","nzd","cny","jpy","cad","sek","zar","inr","aed","afn","all","amd","ang","aoa","ars","awg","azn","bam","bbd","bdt","bgn","bif","bmd","bnd","bob","brl","bsd","bwp","bzd","cdf","clp","cop","crc","cve","czk","djf","dkk","dop","dzd","egp","etb","fjd","fkp","gel","gip","gmd","gnf","gtq","gyd","hkd","hnl","hrk","htg","huf","idr","ils","isk","jmd","kes","kgs","khr","kmf","krw","kyd","kzt","lak","lbp","lkr","lrd","lsl","mad","mdl","mga","mkd","mmk","mnt","mop","mro","mur","mvr","mwk","mxn","myr","mzn","nad","ngn","nio","nok","npr","pab","pen","pgk","php","pkr","pln","pyg","qar","ron","rsd","rub","rwf","sar","sbd","scr","sgd","shp","sll","sos","srd","std","szl","thb","tjs","top","try","ttd","twd","tzs","uah","ugx","uyu","uzs","vnd","vuv","wst","xaf","xcd","xof","xpf","yer","zmw"]
 
+    var paypalCurrency = ["USD", "AUD", "BRL", "CAD", "CZK", "DKK", "EUR", "HKD", "HUF", "ILS", "JPY", "MXN", "TWD", "NZD", "NOK", "PHP", "PLN", "GBP", "RUB", "SGD", "SEK", "CHF", "THB"]
   //  var decimalCurrency = allCurrency.filter(currency => !zeroDecimal.includes(currency))
+
+   let currencyArray = ["USD - US Dollar", "AED - United Arab Emirates Dirham", "AFN - Afghan Afghani", "ALL - Albanian Lek", "AMD - Armenian Dram", "ANG - Netherlands Antillean Guilder", "AOA - Angolan Kwanza", "ARS - Argentine Peso", "AUD - Australian Dollar", "AWG - Aruban Florin", "AZN - Azerbaijani Manat", "BAM - Bosnia-Herzegovina Convertible Mark", "BBD - Barbadian Dollar", "BDT - Bangladeshi Taka", "BGN - Bulgarian Lev", "BIF - Burundian Franc", "BMD - Bermudan Dollar", "BND - Brunei Dollar", "BOB - Bolivian Boliviano", "BRL - Brazilian Real", "BSD - Bahamian Dollar", "BWP - Botswanan Pula", "BZD - Belize Dollar", "CAD - Canadian Dollar", "CDF - Congolese Franc", "CHF - Swiss Franc", "CLP - Chilean Peso", "CNY - Chinese Yuan", "COP - Colombian Peso", "CRC - Costa Rican Colón", "CVE - Cape Verdean Escudo", "CZK - Czech Koruna", "DJF - Djiboutian Franc", "DKK - Danish Krone", "DOP - Dominican Peso", "DZD - Algerian Dinar", "EGP - Egyptian Pound", "ETB - Ethiopian Birr", "EUR - Euro", "FJD - Fijian Dollar", "FKP - Falkland Islands Pound", "GBP - British Pound", "GEL - Georgian Lari", "GIP - Gibraltar Pound", "GMD - Gambian Dalasi", "GNF - Guinean Franc", "GTQ - Guatemalan Quetzal", "GYD - Guyanaese Dollar", "HKD - Hong Kong Dollar", "HNL - Honduran Lempira", "HRK - Croatian Kuna", "HTG - Haitian Gourde", "HUF - Hungarian Forint", "IDR - Indonesian Rupiah", "ILS - Israeli New Shekel", "INR - Indian Rupee", "ISK - Icelandic Króna", "JMD - Jamaican Dollar", "JPY - Japanese Yen", "KES - Kenyan Shilling", "KGS - Kyrgystani Som", "KHR - Cambodian Riel", "KMF - Comorian Franc", "KRW - South Korean Won", "KYD - Cayman Islands Dollar", "KZT - Kazakhstani Tenge", "LAK - Laotian Kip", "LBP - Lebanese Pound", "LKR - Sri Lankan Rupee", "LRD - Liberian Dollar", "LSL - Lesotho Loti", "MAD - Moroccan Dirham", "MDL - Moldovan Leu", "MGA - Malagasy Ariary", "MKD - Macedonian Denar", "MMK - Myanmar Kyat", "MNT - Mongolian Tugrik", "MOP - Macanese Pataca", "MRO - Mauritanian Ouguiya (1973–2017)", "MUR - Mauritian Rupee", "MVR - Maldivian Rufiyaa", "MWK - Malawian Kwacha", "MXN - Mexican Peso", "MYR - Malaysian Ringgit", "MZN - Mozambican Metical", "NAD - Namibian Dollar", "NGN - Nigerian Naira", "NIO - Nicaraguan Córdoba", "NOK - Norwegian Krone", "NPR - Nepalese Rupee", "NZD - New Zealand Dollar", "PAB - Panamanian Balboa", "PEN - Peruvian Sol", "PGK - Papua New Guinean Kina", "PHP - Philippine Piso", "PKR - Pakistani Rupee", "PLN - Polish Zloty", "PYG - Paraguayan Guarani", "QAR - Qatari Rial", "RON - Romanian Leu", "RSD - Serbian Dinar", "RUB - Russian Ruble", "RWF - Rwandan Franc", "SAR - Saudi Riyal", "SBD - Solomon Islands Dollar", "SCR - Seychellois Rupee", "SEK - Swedish Krona", "SGD - Singapore Dollar", "SHP - St. Helena Pound", "SLL - Sierra Leonean Leone", "SOS - Somali Shilling", "SRD - Surinamese Dollar", "STD - São Tomé & Príncipe Dobra (1977–2017)", "SZL - Swazi Lilangeni", "THB - Thai Baht", "TJS - Tajikistani Somoni", "TOP - Tongan Paʻanga", "TRY - Turkish Lira", "TTD - Trinidad & Tobago Dollar", "TWD - New Taiwan Dollar", "TZS - Tanzanian Shilling", "UAH - Ukrainian Hryvnia", "UGX - Ugandan Shilling", "UYU - Uruguayan Peso", "UZS - Uzbekistani Som", "VND - Vietnamese Dong", "VUV - Vanuatu Vatu", "WST - Samoan Tala", "XAF - Central African CFA Franc", "XCD - East Caribbean Dollar", "XOF - West African CFA Franc", "XPF - CFP Franc", "YER - Yemeni Rial", "ZAR - South African Rand", "ZMW - Zambian Kwacha"]
+  
+
 
   var oneTime, multiTime;
   fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/onetime1value.json').then(response => response.json()).then(data => oneTime=data).catch(console.error);
@@ -503,11 +628,15 @@ function ready() {
 
   
 
-  for(curr of allCurrency){
+  for(let curr of currencyArray){
 
-    $('#currencylist').append('<option value="'+curr.toUpperCase()+'">'+curr.toUpperCase()+'</option>')
+    $('#currencyliststripe').append('<option value="'+curr.substring(0, 3)+'">'+curr+'</option>')
+
+    if(paypalCurrency.includes(curr.substring(0, 3)))
+    $('#currencylistpaypal').append('<option value="'+curr.substring(0, 3)+'">'+curr+'</option>')
   }
 
+  
 
   var currenturl = new URL(window.location)
   var urlparams = currenturl.searchParams;
@@ -532,8 +661,8 @@ function ready() {
   largesharetext = encodeURIComponent(largesharetext)
 
 
-
-
+window.successURL = 'https://fawazahmed0.github.io/donate.html?mymsg='+encodeURIComponent(successmsg)+'&sharelink='+sharelink+'&smallsharetext='+smallsharetext+'&largesharetext='+largesharetext+'&sharebtnmsg='+encodeURIComponent(sharebtnmsg)
+window.cancelURL = 'https://fawazahmed0.github.io/donate.html?mymsg='+encodeURIComponent(cancelmsg)+'&sharelink='+sharelink+'&smallsharetext='+smallsharetext+'&largesharetext='+largesharetext+'&sharebtnmsg='+encodeURIComponent(sharebtnmsg)
 // Add message on the page
 $('#mymsg').html(mymsg)
 
@@ -587,35 +716,7 @@ new QRCode(document.getElementById("rippleqr"), $('#rippleaddress').text().trim(
 new ClipboardJS('.copybtn');
 
 
-var mobile=false;
-// https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent
-// Check whether the device is mobile
-function ismobile(){
-var hasTouchScreen = false;
-if ("maxTouchPoints" in navigator) {
-    hasTouchScreen = navigator.maxTouchPoints > 0;
-} else if ("msMaxTouchPoints" in navigator) {
-    hasTouchScreen = navigator.msMaxTouchPoints > 0;
-} else {
-    var mQ = window.matchMedia && matchMedia("(pointer:coarse)");
-    if (mQ && mQ.media === "(pointer:coarse)") {
-        hasTouchScreen = !!mQ.matches;
-    } else if ('orientation' in window) {
-        hasTouchScreen = true; // deprecated, but good fallback
-    } else {
-        // Only as a last resort, fall back to user agent sniffing
-        var UA = navigator.userAgent;
-        hasTouchScreen = (
-            /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
-            /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
-        );
-    }
-}
-mobile=hasTouchScreen;
-return hasTouchScreen;
-
-}
-ismobile()
+var mobile=ismobile()
 
 
 if(sharelink != ""){
@@ -672,8 +773,86 @@ $('#donatebtn').hide()
 //  https://stackoverflow.com/questions/19846078/how-to-read-from-chromes-console-in-javascript
 
 
+
+setPaypalButtons()
+
+ // Add searchable select
+ $('select').select2({
+    theme: 'bootstrap4',
+  });
+
+
+}
+
+function setPaypalButtons(){
+ let paypalScriptURL =  document.querySelector('#paypalscript').src
+
+
+ paypalScriptURL= new URL(paypalScriptURL);
+let params = new URLSearchParams(paypalScriptURL.search);
+
+//Add a third parameter.
+params.set('currency',  $('#currencylistpaypal').val().trim());
+
+document.querySelector('#paypalscript').src = paypalScriptURL.href.replace(paypalScriptURL.search,'') + '?'+params.toString()
+
+ document.querySelector('#paypal-button-container').innerHTML = ''
+
+
+ paypal.Buttons({
+
+onInit: function(data, actions)  {
+  window.paypalBtnAction = actions
+  if(!document.querySelector('#paypalform').checkValidity())
+  actions.disable()
+},
+onClick: function(data, actions)  {
+
+  document.querySelector('#paypalform').reportValidity()
+
+},
+  createOrder: function(data, actions) {
+    return actions.order.create({
+      purchase_units: [{
+        amount: {
+         
+          value: document.querySelector('#amtpaypal').value.trim()
+        }
+      }]
+    });
+  },
+  onApprove: function(data, actions) {
+    window.location.href = successURL;
+},
+onError: function (err) {
+  // For example, redirect to a specific error page
+  window.location.href = cancelURL
+}
+}).render('#paypal-button-container'); // Display payment options on your web page
+
+
+}
+
+
+function checkAndEnableBtn(){
+  
+  if(document.querySelector('#paypalform').checkValidity()){
+    
+  paypalBtnAction.enable()
+  }
+    else
+    paypalBtnAction.disable()
+
+    
 }
 
 document.addEventListener("DOMContentLoaded", ready);
 
+
+
 </script>
+
+
+
+
+
