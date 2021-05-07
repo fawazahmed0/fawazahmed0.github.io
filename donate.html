@@ -179,7 +179,7 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
                         placeholder="Enter Amount" required>
                     </div>
                     <div class="col-3 border-0">
-                      <button type="submit" id='stripebtn' class="btn btn-primary">Donate</button>
+                      <button type="submit" id='stripebtn' class="btn btn-primary">Donate <span id='stripebtnspinner' class="spinner-border spinner-border-sm" role="status" aria-hidden="true" hidden></span></button>
                     </div>
 
                   </div>
@@ -464,7 +464,7 @@ Could you retry to donate or consider sharing my work with friends and that woul
   function striperun() {
   
 
-    document.querySelector('#stripebtn').innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`;
+    document.querySelector('#stripebtnspinner').removeAttribute('hidden')
 
     var curr = $('#currencyliststripe').val().trim().toLowerCase()
     var mode = $('input[name="occurencestripe"]:checked').val().trim();
@@ -493,7 +493,7 @@ Could you retry to donate or consider sharing my work with friends and that woul
     }).then(console.log).catch(console.error);
 
 
-    document.querySelector('#stripebtn').innerHTML = 'Donate';
+    document.querySelector('#stripebtnspinner').setAttribute('hidden','')
   }
 
 
