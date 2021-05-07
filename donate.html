@@ -9,9 +9,10 @@ layout: simple
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
 <script defer src="https://js.stripe.com/v3/"></script>
-<script id='paypalscript' defer src="https://www.paypal.com/sdk/js?client-id=Ablm-UfllPQaq5JsJkxc3vtVi9QTjN894xuQ_VfJcklY_DiaIDBWopDa7dYwJ3uuYOuXUwaqNahbc8JI&currency=USD"> // Replace YOUR_CLIENT_ID with your sandbox client ID
-</script>
-<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" ></iframe>
+<script id='paypalscript' defer
+  src="https://www.paypal.com/sdk/js?client-id=Ablm-UfllPQaq5JsJkxc3vtVi9QTjN894xuQ_VfJcklY_DiaIDBWopDa7dYwJ3uuYOuXUwaqNahbc8JI&currency=USD"> // Replace YOUR_CLIENT_ID with your sandbox client ID
+  </script>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script defer src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -38,46 +39,52 @@ layout: simple
 
     <div class="col-sm-3 col-lg-6 border-0 m-3">
       <div class="row bg-light p-2 rounded">
-      <h5>Hi friend,<br></h5>
-   <h5 id="mymsg">
+        <h5>Hi friend,<br></h5>
+        <h5 id="mymsg">
 
-   </h5>
+        </h5>
 
-   </div>
-   <div class="row">
-
-
-    <a class="btn btn-link" id="issuebtn" data-toggle="collapse" href="#issue" role="button" aria-expanded="false" aria-controls="issue">
-     Facing any issue? Let me know
-   </a>
-</div>
- <div class="row">
-   <div class="collapse" id="issue">
-  <form id="issueform" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSd9agrjOEE0khzfeaBhdH18ADEm2-kvy6Mkv8aFSBpgtcHt8A/formResponse" method="post" target="hidden_iframe" class="form-group card card-body">
-
-<textarea id="issuetext" type="text" placeholder="Let me know what issue you faced and also share your contact email if possible" name="entry.1071744889" rows=5 minlength="1" required></textarea>
+      </div>
+      <div class="row">
 
 
-      <button id="issuesend" class="btn btn-primary float-right" type="button" onclick="errorsend();">Send</button>
-</form>
+        <a class="btn btn-link" id="issuebtn" data-toggle="collapse" href="#issue" role="button" aria-expanded="false"
+          aria-controls="issue">
+          Facing any issue? Let me know
+        </a>
+      </div>
+      <div class="row">
+        <div class="collapse" id="issue">
+          <form id="issueform"
+            action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSd9agrjOEE0khzfeaBhdH18ADEm2-kvy6Mkv8aFSBpgtcHt8A/formResponse"
+            method="post" target="hidden_iframe" class="form-group card card-body">
 
-   </div>
-  <div id="issuetoast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
-  <div class="toast-header">
-
-    <strong class="mr-auto">Thank you</strong>
-
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="toast-body">
-    Thanks for reporting the problem, I will look into the issue as soon as I can.
-  </div>
-</div>
+            <textarea id="issuetext" type="text"
+              placeholder="Let me know what issue you faced and also share your contact email if possible"
+              name="entry.1071744889" rows=5 minlength="1" required></textarea>
 
 
-   </div>
+            <button id="issuesend" class="btn btn-primary float-right" type="button"
+              onclick="errorsend();">Send</button>
+          </form>
+
+        </div>
+        <div id="issuetoast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+          <div class="toast-header">
+
+            <strong class="mr-auto">Thank you</strong>
+
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="toast-body">
+            Thanks for reporting the problem, I will look into the issue as soon as I can.
+          </div>
+        </div>
+
+
+      </div>
     </div>
     <div class="col border-0 bg-white">
 
@@ -86,7 +93,10 @@ layout: simple
       <div class="container">
         <div class="row bg-white">
           <div class="col-6">
-            <img src="https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/images/currency.png" class="img-fluid rounded m-3 w-75 h-75" alt="MasterCard Amex Visa Paypal Tether Bitcoin Ethereum Ripple Payment Accepted">
+            <img
+              src="https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/images/currency.png"
+              class="img-fluid rounded m-3 w-75 h-75"
+              alt="MasterCard Amex Visa Paypal Tether Bitcoin Ethereum Ripple Payment Accepted">
 
           </div>
 
@@ -98,16 +108,18 @@ layout: simple
 
 
 
-            <a class="btn btn-primary btn-lg mx-3" id="donatebtn" data-toggle="collapse" href="#donatediv" role="button" aria-expanded="false" aria-controls="donatediv">
-             &#10084; Donate
-            </a>
+      <a class="btn btn-primary btn-lg mx-3" id="donatebtn" data-toggle="collapse" href="#donatediv" role="button"
+        aria-expanded="false" aria-controls="donatediv">
+        &#10084; Donate
+      </a>
 
 
 
 
-            <a class="btn btn-primary btn-lg mx-3 mb-1" id="sharebtn" data-toggle="collapse" href="#sharediv" role="button" aria-expanded="false" aria-controls="sharediv">
-          &#10150; Share
-            </a>
+      <a class="btn btn-primary btn-lg mx-3 mb-1" id="sharebtn" data-toggle="collapse" href="#sharediv" role="button"
+        aria-expanded="false" aria-controls="sharediv">
+        &#10150; Share
+      </a>
 
 
 
@@ -116,7 +128,7 @@ layout: simple
 
 
 
-<!--html entities unicode symbols https://www.toptal.com/designers/htmlarrows/symbols/
+      <!--html entities unicode symbols https://www.toptal.com/designers/htmlarrows/symbols/
 https://unicode.org/emoji/charts/full-emoji-list.html
 For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x and append by ;
 -->
@@ -124,7 +136,7 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 
       <div class="collapse card card-body" id="sharediv">
 
-       <div id="sharebtnmsg" class="card-title font-weight-bold pl-3"></div>
+        <div id="sharebtnmsg" class="card-title font-weight-bold pl-3"></div>
 
 
 
@@ -151,12 +163,14 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
               <h2 class="mb-0">
 
                 <div class="btn-group" role="group" aria-label="currency">
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsecardpaypal" aria-expanded="true" aria-controls="collapsecardpaypal">PayPal</button>
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsecardpaypal"
+                    aria-expanded="true" aria-controls="collapsecardpaypal">PayPal</button>
 
-            
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsecardstripe" aria-expanded="true" aria-controls="collapsecardstripe">Stripe</button>
 
-                 
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsecardstripe"
+                    aria-expanded="true" aria-controls="collapsecardstripe">Stripe</button>
+
+
                 </div>
 
 
@@ -178,7 +192,8 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 
                     <div class="form-check form-check-inline">
 
-                      <input class="form-check-input" type="radio" name="occurencestripe" id="onetime1" value="payment" checked>
+                      <input class="form-check-input" type="radio" name="occurencestripe" id="onetime1" value="payment"
+                        checked>
                       <label class="form-check-label" for="payment">
                         One Time
                       </label>
@@ -189,7 +204,8 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 
                     <div class="form-check form-check-inline">
 
-                      <input class="form-check-input" type="radio" name="occurencestripe" id="monthly1" value="subscription">
+                      <input class="form-check-input" type="radio" name="occurencestripe" id="monthly1"
+                        value="subscription">
                       <label class="form-check-label" for="subscription">
                         Monthly
                       </label>
@@ -200,12 +216,13 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
                   <div class="form-row">
                     <div class="col-5 border-0">
 
-                      <select   class="js-example-basic-single form-select" id="currencyliststripe">
+                      <select class="js-example-basic-single form-select" id="currencyliststripe">
                       </select>
                     </div>
 
                     <div class="col-4 border-0">
-                      <input id="amtstripe" type="number" min="1" step="1" class="form-control" placeholder="Enter Amount" required>
+                      <input id="amtstripe" type="number" min="1" step="1" class="form-control"
+                        placeholder="Enter Amount" required>
                     </div>
                     <div class="col-3 border-0">
                       <button type="submit" id='stripebtn' class="btn btn-primary">Donate</button>
@@ -244,7 +261,8 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 
                     <div class="form-check form-check-inline">
 
-                      <input class="form-check-input" type="radio" name="occurencepaypal" id="onetime2" value="payment" onchange="setPaypalButtons()" checked>
+                      <input class="form-check-input" type="radio" name="occurencepaypal" id="onetime2" value="payment"
+                        onchange="setPaypalButtons()" checked>
                       <label class="form-check-label" for="payment">
                         One Time
                       </label>
@@ -255,7 +273,8 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 
                     <div class="form-check form-check-inline">
 
-                      <input class="form-check-input" type="radio" name="occurencepaypal" id="monthly2" onchange="setPaypalButtons()" value="subscription">
+                      <input class="form-check-input" type="radio" name="occurencepaypal" id="monthly2"
+                        onchange="setPaypalButtons()" value="subscription">
                       <label class="form-check-label" for="subscription">
                         Monthly
                       </label>
@@ -266,31 +285,33 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
                   <div class="form-row">
                     <div class="col-5 border-0">
 
-                      <select   class="js-example-basic-single form-select" id="currencylistpaypal" onchange="setPaypalButtons()">
+                      <select class="js-example-basic-single form-select" id="currencylistpaypal"
+                        onchange="setPaypalButtons()">
                       </select>
                     </div>
 
                     <div class="col-7 border-0">
-                      <input id="amtpaypal" type="number" min="1" step="1" class="form-control" placeholder="Enter Amount" required>
+                      <input id="amtpaypal" type="number" min="1" step="1" class="form-control"
+                        placeholder="Enter Amount" required>
                     </div>
- 
+
 
                     <div class="container m-3">
                       <div class="row">
                         <div class="col-2">
-                       
+
                         </div>
-                       
-                          <div class="col" id="paypal-button-container"></div>
-                        
-                        
+
+                        <div class="col" id="paypal-button-container"></div>
+
+
                         <div class="col-2">
-                 
+
                         </div>
                       </div>
                     </div>
 
-                  
+
 
                   </div>
                 </form>
@@ -324,12 +345,16 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
               <h2 class="mb-0">
                 <div class="btn-group" role="group" aria-label="cryptocurrency">
 
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsebitcoin" aria-expanded="true" aria-controls="collapsebitcoin">Bitcoin</button>
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsebitcoin"
+                    aria-expanded="true" aria-controls="collapsebitcoin">Bitcoin</button>
 
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseether" aria-expanded="true" aria-controls="collapseether">Ethereum</button>
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseether"
+                    aria-expanded="true" aria-controls="collapseether">Ethereum</button>
 
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsetether" aria-expanded="true" aria-controls="collapsetether">Tether</button>
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseripple" aria-expanded="true" aria-controls="collapseripple">Ripple</button>
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsetether"
+                    aria-expanded="true" aria-controls="collapsetether">Tether</button>
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseripple"
+                    aria-expanded="true" aria-controls="collapseripple">Ripple</button>
 
 
                 </div>
@@ -341,14 +366,16 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
             </div>
 
             <div id="collapsebitcoin" class="collapse" aria-labelledby="collapsebitcoin" data-parent="#accordioncrypto">
-               <div class="card-body" id="cardbtc">
+              <div class="card-body" id="cardbtc">
                 <div id="btcqr">
 
                 </div>
 
                 <div class="m-3">
-                  <span class="font-weight-bold">Bitcoin(BTC) Address:</span> <span id="btcaddress">bc1q49xhj98wg6yy6z2h25vj3e5h4uw3hz0fwfxzc9</span>
-                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#btcaddress" data-toggle="tooltip">
+                  <span class="font-weight-bold">Bitcoin(BTC) Address:</span> <span
+                    id="btcaddress">bc1q49xhj98wg6yy6z2h25vj3e5h4uw3hz0fwfxzc9</span>
+                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#btcaddress"
+                    data-toggle="tooltip">
                     Copy
                   </button>
 
@@ -358,15 +385,17 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
             </div>
 
 
-                <div id="collapseether" class="collapse" aria-labelledby="collapseether" data-parent="#accordioncrypto">
-               <div class="card-body" id="cardether">
+            <div id="collapseether" class="collapse" aria-labelledby="collapseether" data-parent="#accordioncrypto">
+              <div class="card-body" id="cardether">
                 <div id="etherqr">
 
                 </div>
 
                 <div class="m-3">
-                  <span class="font-weight-bold">Ethereum(ETH) Address:</span> <span id="etheraddress">0x275D669429E7b906243a0B19BAeD6061D4f06B2C</span>
-                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#etheraddress" data-toggle="tooltip">
+                  <span class="font-weight-bold">Ethereum(ETH) Address:</span> <span
+                    id="etheraddress">0x275D669429E7b906243a0B19BAeD6061D4f06B2C</span>
+                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#etheraddress"
+                    data-toggle="tooltip">
                     Copy
                   </button>
 
@@ -375,15 +404,17 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
               </div>
             </div>
 
-             <div id="collapsetether" class="collapse" aria-labelledby="collapsetether" data-parent="#accordioncrypto">
-               <div class="card-body" id="cardtether">
+            <div id="collapsetether" class="collapse" aria-labelledby="collapsetether" data-parent="#accordioncrypto">
+              <div class="card-body" id="cardtether">
                 <div id="tetherqr">
 
                 </div>
 
                 <div class="m-3">
-                  <span class="font-weight-bold">Tether USD (USDT) Address:</span> <span id="tetheraddress">0x275D669429E7b906243a0B19BAeD6061D4f06B2C</span>
-                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#tetheraddress" data-toggle="tooltip">
+                  <span class="font-weight-bold">Tether USD (USDT) Address:</span> <span
+                    id="tetheraddress">0x275D669429E7b906243a0B19BAeD6061D4f06B2C</span>
+                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#tetheraddress"
+                    data-toggle="tooltip">
                     Copy
                   </button>
 
@@ -392,15 +423,17 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
               </div>
             </div>
 
-              <div id="collapseripple" class="collapse" aria-labelledby="collapseripple" data-parent="#accordioncrypto">
-               <div class="card-body" id="cardripple">
+            <div id="collapseripple" class="collapse" aria-labelledby="collapseripple" data-parent="#accordioncrypto">
+              <div class="card-body" id="cardripple">
                 <div id="rippleqr">
 
                 </div>
 
                 <div class="m-3">
-                  <span class="font-weight-bold">Ripple(XRP) Address:</span> <span id="rippleaddress">rHiMKDfn7ygQ8oBMAf8HqRekFrAnU6QieX</span>
-                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#rippleaddress" data-toggle="tooltip">
+                  <span class="font-weight-bold">Ripple(XRP) Address:</span> <span
+                    id="rippleaddress">rHiMKDfn7ygQ8oBMAf8HqRekFrAnU6QieX</span>
+                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#rippleaddress"
+                    data-toggle="tooltip">
                     Copy
                   </button>
 
@@ -417,7 +450,8 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
           <div class="card">
             <div class="card-header" id="upione">
               <h2 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseupi" aria-expanded="true" aria-controls="collapsupi">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseupi"
+                  aria-expanded="true" aria-controls="collapsupi">
                   UPI - GooglePay (Indian Users Only)
                 </button>
               </h2>
@@ -431,7 +465,8 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 
                 <div class="m-3">
                   <span class="font-weight-bold">UPI:</span> <span id="upiid"> fawazahmed95@okicici</span>
-                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#upiid" data-toggle="tooltip">
+                  <button class="btn btn-info copybtn ml-1" type="button" data-clipboard-target="#upiid"
+                    data-toggle="tooltip">
                     Copy
                   </button>
 
@@ -461,69 +496,68 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
 <script>
 
 
-// Storing console information
-// https://stackoverflow.com/questions/19846078/how-to-read-from-chromes-console-in-javascript
+  // Storing console information
+  // https://stackoverflow.com/questions/19846078/how-to-read-from-chromes-console-in-javascript
 
-  if (console.everything === undefined)
-  {
-      console.everything = [];
+  if (console.everything === undefined) {
+    console.everything = [];
 
-      console.defaultLog = console.log.bind(console);
-      console.log = function(){
-          console.everything.push({"type":"log", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
-          console.defaultLog.apply(console, arguments);
-      }
-      console.defaultError = console.error.bind(console);
-      console.error = function(){
-          console.everything.push({"type":"error", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
-          console.defaultError.apply(console, arguments);
-      }
-      console.defaultWarn = console.warn.bind(console);
-      console.warn = function(){
-          console.everything.push({"type":"warn", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
-          console.defaultWarn.apply(console, arguments);
-      }
-      console.defaultDebug = console.debug.bind(console);
-      console.debug = function(){
-          console.everything.push({"type":"debug", "datetime":Date().toLocaleString(), "value":Array.from(arguments)});
-          console.defaultDebug.apply(console, arguments);
-      }
-      //
-      console.everything.push({"currenturl": window.location.href })
+    console.defaultLog = console.log.bind(console);
+    console.log = function () {
+      console.everything.push({ "type": "log", "datetime": Date().toLocaleString(), "value": Array.from(arguments) });
+      console.defaultLog.apply(console, arguments);
+    }
+    console.defaultError = console.error.bind(console);
+    console.error = function () {
+      console.everything.push({ "type": "error", "datetime": Date().toLocaleString(), "value": Array.from(arguments) });
+      console.defaultError.apply(console, arguments);
+    }
+    console.defaultWarn = console.warn.bind(console);
+    console.warn = function () {
+      console.everything.push({ "type": "warn", "datetime": Date().toLocaleString(), "value": Array.from(arguments) });
+      console.defaultWarn.apply(console, arguments);
+    }
+    console.defaultDebug = console.debug.bind(console);
+    console.debug = function () {
+      console.everything.push({ "type": "debug", "datetime": Date().toLocaleString(), "value": Array.from(arguments) });
+      console.defaultDebug.apply(console, arguments);
+    }
+    //
+    console.everything.push({ "currenturl": window.location.href })
   }
 
-// JSON.stringify(console.everything)
-function errorsend(){
+  // JSON.stringify(console.everything)
+  function errorsend() {
 
-  // When issue send is clicked, collapse and then show the toast message
-// https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/reportValidity#Browser_compatibility
-// https://googlechrome.github.io/samples/report-validity/
-// https://stackoverflow.com/questions/17550317/how-to-manually-show-a-html5-validation-message-from-a-javascript-function
-if(document.querySelector('#issueform').reportValidity()){
+    // When issue send is clicked, collapse and then show the toast message
+    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/reportValidity#Browser_compatibility
+    // https://googlechrome.github.io/samples/report-validity/
+    // https://stackoverflow.com/questions/17550317/how-to-manually-show-a-html5-validation-message-from-a-javascript-function
+    if (document.querySelector('#issueform').reportValidity()) {
 
-    $('#issue').collapse('hide')
+      $('#issue').collapse('hide')
 
-    $('#issuetoast').toast('show')
+      $('#issuetoast').toast('show')
 
-   // After the collapse is hidden completely
-    $('#issue').one('hidden.bs.collapse', function () {
-      // Add console details to the message before submitting
-       $('#issuetext').val( $('#issuetext').val()+ "  " +JSON.stringify(console.everything))
-       // submit the form
+      // After the collapse is hidden completely
+      $('#issue').one('hidden.bs.collapse', function () {
+        // Add console details to the message before submitting
+        $('#issuetext').val($('#issuetext').val() + "  " + JSON.stringify(console.everything))
+        // submit the form
         $('#issueform').submit()
-})
+      })
 
-}
-}
+    }
+  }
 
-var successmsg = `Thank you for donating,<br><br>
+  var successmsg = `Thank you for donating,<br><br>
 I appreciate that you have donated to me and I would like to thank you for that,  can you also share my work with friends.<br><br>
 That would be very helpful`
-    var cancelmsg = `It looks like there was an error while donating<br><br>
+  var cancelmsg = `It looks like there was an error while donating<br><br>
 Could you retry to donate or consider sharing my work with friends and that would be very helpful`
 
 
-  function striperun(){
+  function striperun() {
 
     document.querySelector('#stripebtn').innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...`
 
@@ -535,58 +569,58 @@ Could you retry to donate or consider sharing my work with friends and that woul
 
 
 
-    if(mode == 'subscription')
-     jsonlist = multiTime
+    if (mode == 'subscription')
+      jsonlist = multiTime
 
-      // When the customer clicks on the button, redirect
-      // them to Checkout.
-      stripe.redirectToCheckout({
-        lineItems: [{price: jsonlist[curr], quantity: quantityval }],
-        mode: mode,
-        // Do not rely on the redirect to the successUrl for fulfilling
-        // purchases, customers may not always reach the success_url after
-        // a successful payment.
-        // Instead use one of the strategies described in
-        // https://stripe.com/docs/payments/checkout/fulfillment
-        successUrl: successURL,
-        cancelUrl: cancelURL,
-        submitType: 'donate',
-      }).then(console.log).catch(console.error);
+    // When the customer clicks on the button, redirect
+    // them to Checkout.
+    stripe.redirectToCheckout({
+      lineItems: [{ price: jsonlist[curr], quantity: quantityval }],
+      mode: mode,
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfillment
+      successUrl: successURL,
+      cancelUrl: cancelURL,
+      submitType: 'donate',
+    }).then(console.log).catch(console.error);
 
 
-      document.querySelector('#stripebtn').innerHTML = 'Donate'
+    document.querySelector('#stripebtn').innerHTML = 'Donate'
   }
 
 
 
 
-// https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent
-// Check whether the device is mobile
-function ismobile(){
-var hasTouchScreen = false;
-if ("maxTouchPoints" in navigator) {
-    hasTouchScreen = navigator.maxTouchPoints > 0;
-} else if ("msMaxTouchPoints" in navigator) {
-    hasTouchScreen = navigator.msMaxTouchPoints > 0;
-} else {
-    var mQ = window.matchMedia && matchMedia("(pointer:coarse)");
-    if (mQ && mQ.media === "(pointer:coarse)") {
-        hasTouchScreen = !!mQ.matches;
-    } else if ('orientation' in window) {
-        hasTouchScreen = true; // deprecated, but good fallback
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent
+  // Check whether the device is mobile
+  function ismobile() {
+    var hasTouchScreen = false;
+    if ("maxTouchPoints" in navigator) {
+      hasTouchScreen = navigator.maxTouchPoints > 0;
+    } else if ("msMaxTouchPoints" in navigator) {
+      hasTouchScreen = navigator.msMaxTouchPoints > 0;
     } else {
+      var mQ = window.matchMedia && matchMedia("(pointer:coarse)");
+      if (mQ && mQ.media === "(pointer:coarse)") {
+        hasTouchScreen = !!mQ.matches;
+      } else if ('orientation' in window) {
+        hasTouchScreen = true; // deprecated, but good fallback
+      } else {
         // Only as a last resort, fall back to user agent sniffing
         var UA = navigator.userAgent;
         hasTouchScreen = (
-            /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
-            /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
+          /\b(BlackBerry|webOS|iPhone|IEMobile)\b/i.test(UA) ||
+          /\b(Android|Windows Phone|iPad|iPod)\b/i.test(UA)
         );
+      }
     }
-}
 
-return hasTouchScreen;
+    return hasTouchScreen;
 
-}
+  }
 
 
 
@@ -600,259 +634,254 @@ return hasTouchScreen;
 
 
   // Code for stripe
-    // This array zeroDecimal is not being used in this code, it's just for reference for testing etc
-    // While creating product prices this array is considered, as for zeroDecimal jpy , 1 will create 1 jpy and for non zeroDecimal
-    // curreny usd 1 will create 0.01 price value
-    // Refer: https://github.com/fawazahmed0/stripe-checkout-generator
-    var zeroDecimal = ["bif","clp","djf","gnf","jpy","kmf","krw","mga","pyg","rwf","vnd","vuv","xaf","xof","xpf"]
+  // This array zeroDecimal is not being used in this code, it's just for reference for testing etc
+  // While creating product prices this array is considered, as for zeroDecimal jpy , 1 will create 1 jpy and for non zeroDecimal
+  // curreny usd 1 will create 0.01 price value
+  // Refer: https://github.com/fawazahmed0/stripe-checkout-generator
+  var zeroDecimal = ["bif", "clp", "djf", "gnf", "jpy", "kmf", "krw", "mga", "pyg", "rwf", "vnd", "vuv", "xaf", "xof", "xpf"]
 
-    var allCurrency = ["usd","eur","gbp","chf","aud","nzd","cny","jpy","cad","sek","zar","inr","aed","afn","all","amd","ang","aoa","ars","awg","azn","bam","bbd","bdt","bgn","bif","bmd","bnd","bob","brl","bsd","bwp","bzd","cdf","clp","cop","crc","cve","czk","djf","dkk","dop","dzd","egp","etb","fjd","fkp","gel","gip","gmd","gnf","gtq","gyd","hkd","hnl","hrk","htg","huf","idr","ils","isk","jmd","kes","kgs","khr","kmf","krw","kyd","kzt","lak","lbp","lkr","lrd","lsl","mad","mdl","mga","mkd","mmk","mnt","mop","mro","mur","mvr","mwk","mxn","myr","mzn","nad","ngn","nio","nok","npr","pab","pen","pgk","php","pkr","pln","pyg","qar","ron","rsd","rub","rwf","sar","sbd","scr","sgd","shp","sll","sos","srd","std","szl","thb","tjs","top","try","ttd","twd","tzs","uah","ugx","uyu","uzs","vnd","vuv","wst","xaf","xcd","xof","xpf","yer","zmw"]
+  var allCurrency = ["usd", "eur", "gbp", "chf", "aud", "nzd", "cny", "jpy", "cad", "sek", "zar", "inr", "aed", "afn", "all", "amd", "ang", "aoa", "ars", "awg", "azn", "bam", "bbd", "bdt", "bgn", "bif", "bmd", "bnd", "bob", "brl", "bsd", "bwp", "bzd", "cdf", "clp", "cop", "crc", "cve", "czk", "djf", "dkk", "dop", "dzd", "egp", "etb", "fjd", "fkp", "gel", "gip", "gmd", "gnf", "gtq", "gyd", "hkd", "hnl", "hrk", "htg", "huf", "idr", "ils", "isk", "jmd", "kes", "kgs", "khr", "kmf", "krw", "kyd", "kzt", "lak", "lbp", "lkr", "lrd", "lsl", "mad", "mdl", "mga", "mkd", "mmk", "mnt", "mop", "mro", "mur", "mvr", "mwk", "mxn", "myr", "mzn", "nad", "ngn", "nio", "nok", "npr", "pab", "pen", "pgk", "php", "pkr", "pln", "pyg", "qar", "ron", "rsd", "rub", "rwf", "sar", "sbd", "scr", "sgd", "shp", "sll", "sos", "srd", "std", "szl", "thb", "tjs", "top", "try", "ttd", "twd", "tzs", "uah", "ugx", "uyu", "uzs", "vnd", "vuv", "wst", "xaf", "xcd", "xof", "xpf", "yer", "zmw"]
 
-    var paypalCurrency = ["USD", "AUD", "BRL", "CAD", "CZK", "DKK", "EUR", "HKD", "HUF", "ILS", "JPY", "MXN", "TWD", "NZD", "NOK", "PHP", "PLN", "GBP", "RUB", "SGD", "SEK", "CHF", "THB"]
+  var paypalCurrency = ["USD", "AUD", "BRL", "CAD", "CZK", "DKK", "EUR", "HKD", "HUF", "ILS", "JPY", "MXN", "TWD", "NZD", "NOK", "PHP", "PLN", "GBP", "RUB", "SGD", "SEK", "CHF", "THB"]
   //  var decimalCurrency = allCurrency.filter(currency => !zeroDecimal.includes(currency))
 
-   let currencyArray = ["USD - US Dollar", "AED - United Arab Emirates Dirham", "AFN - Afghan Afghani", "ALL - Albanian Lek", "AMD - Armenian Dram", "ANG - Netherlands Antillean Guilder", "AOA - Angolan Kwanza", "ARS - Argentine Peso", "AUD - Australian Dollar", "AWG - Aruban Florin", "AZN - Azerbaijani Manat", "BAM - Bosnia-Herzegovina Convertible Mark", "BBD - Barbadian Dollar", "BDT - Bangladeshi Taka", "BGN - Bulgarian Lev", "BIF - Burundian Franc", "BMD - Bermudan Dollar", "BND - Brunei Dollar", "BOB - Bolivian Boliviano", "BRL - Brazilian Real", "BSD - Bahamian Dollar", "BWP - Botswanan Pula", "BZD - Belize Dollar", "CAD - Canadian Dollar", "CDF - Congolese Franc", "CHF - Swiss Franc", "CLP - Chilean Peso", "CNY - Chinese Yuan", "COP - Colombian Peso", "CRC - Costa Rican Colón", "CVE - Cape Verdean Escudo", "CZK - Czech Koruna", "DJF - Djiboutian Franc", "DKK - Danish Krone", "DOP - Dominican Peso", "DZD - Algerian Dinar", "EGP - Egyptian Pound", "ETB - Ethiopian Birr", "EUR - Euro", "FJD - Fijian Dollar", "FKP - Falkland Islands Pound", "GBP - British Pound", "GEL - Georgian Lari", "GIP - Gibraltar Pound", "GMD - Gambian Dalasi", "GNF - Guinean Franc", "GTQ - Guatemalan Quetzal", "GYD - Guyanaese Dollar", "HKD - Hong Kong Dollar", "HNL - Honduran Lempira", "HRK - Croatian Kuna", "HTG - Haitian Gourde", "HUF - Hungarian Forint", "IDR - Indonesian Rupiah", "ILS - Israeli New Shekel", "INR - Indian Rupee", "ISK - Icelandic Króna", "JMD - Jamaican Dollar", "JPY - Japanese Yen", "KES - Kenyan Shilling", "KGS - Kyrgystani Som", "KHR - Cambodian Riel", "KMF - Comorian Franc", "KRW - South Korean Won", "KYD - Cayman Islands Dollar", "KZT - Kazakhstani Tenge", "LAK - Laotian Kip", "LBP - Lebanese Pound", "LKR - Sri Lankan Rupee", "LRD - Liberian Dollar", "LSL - Lesotho Loti", "MAD - Moroccan Dirham", "MDL - Moldovan Leu", "MGA - Malagasy Ariary", "MKD - Macedonian Denar", "MMK - Myanmar Kyat", "MNT - Mongolian Tugrik", "MOP - Macanese Pataca", "MRO - Mauritanian Ouguiya (1973–2017)", "MUR - Mauritian Rupee", "MVR - Maldivian Rufiyaa", "MWK - Malawian Kwacha", "MXN - Mexican Peso", "MYR - Malaysian Ringgit", "MZN - Mozambican Metical", "NAD - Namibian Dollar", "NGN - Nigerian Naira", "NIO - Nicaraguan Córdoba", "NOK - Norwegian Krone", "NPR - Nepalese Rupee", "NZD - New Zealand Dollar", "PAB - Panamanian Balboa", "PEN - Peruvian Sol", "PGK - Papua New Guinean Kina", "PHP - Philippine Piso", "PKR - Pakistani Rupee", "PLN - Polish Zloty", "PYG - Paraguayan Guarani", "QAR - Qatari Rial", "RON - Romanian Leu", "RSD - Serbian Dinar", "RUB - Russian Ruble", "RWF - Rwandan Franc", "SAR - Saudi Riyal", "SBD - Solomon Islands Dollar", "SCR - Seychellois Rupee", "SEK - Swedish Krona", "SGD - Singapore Dollar", "SHP - St. Helena Pound", "SLL - Sierra Leonean Leone", "SOS - Somali Shilling", "SRD - Surinamese Dollar", "STD - São Tomé & Príncipe Dobra (1977–2017)", "SZL - Swazi Lilangeni", "THB - Thai Baht", "TJS - Tajikistani Somoni", "TOP - Tongan Paʻanga", "TRY - Turkish Lira", "TTD - Trinidad & Tobago Dollar", "TWD - New Taiwan Dollar", "TZS - Tanzanian Shilling", "UAH - Ukrainian Hryvnia", "UGX - Ugandan Shilling", "UYU - Uruguayan Peso", "UZS - Uzbekistani Som", "VND - Vietnamese Dong", "VUV - Vanuatu Vatu", "WST - Samoan Tala", "XAF - Central African CFA Franc", "XCD - East Caribbean Dollar", "XOF - West African CFA Franc", "XPF - CFP Franc", "YER - Yemeni Rial", "ZAR - South African Rand", "ZMW - Zambian Kwacha"]
-  
+  let currencyArray = ["USD - US Dollar", "AED - United Arab Emirates Dirham", "AFN - Afghan Afghani", "ALL - Albanian Lek", "AMD - Armenian Dram", "ANG - Netherlands Antillean Guilder", "AOA - Angolan Kwanza", "ARS - Argentine Peso", "AUD - Australian Dollar", "AWG - Aruban Florin", "AZN - Azerbaijani Manat", "BAM - Bosnia-Herzegovina Convertible Mark", "BBD - Barbadian Dollar", "BDT - Bangladeshi Taka", "BGN - Bulgarian Lev", "BIF - Burundian Franc", "BMD - Bermudan Dollar", "BND - Brunei Dollar", "BOB - Bolivian Boliviano", "BRL - Brazilian Real", "BSD - Bahamian Dollar", "BWP - Botswanan Pula", "BZD - Belize Dollar", "CAD - Canadian Dollar", "CDF - Congolese Franc", "CHF - Swiss Franc", "CLP - Chilean Peso", "CNY - Chinese Yuan", "COP - Colombian Peso", "CRC - Costa Rican Colón", "CVE - Cape Verdean Escudo", "CZK - Czech Koruna", "DJF - Djiboutian Franc", "DKK - Danish Krone", "DOP - Dominican Peso", "DZD - Algerian Dinar", "EGP - Egyptian Pound", "ETB - Ethiopian Birr", "EUR - Euro", "FJD - Fijian Dollar", "FKP - Falkland Islands Pound", "GBP - British Pound", "GEL - Georgian Lari", "GIP - Gibraltar Pound", "GMD - Gambian Dalasi", "GNF - Guinean Franc", "GTQ - Guatemalan Quetzal", "GYD - Guyanaese Dollar", "HKD - Hong Kong Dollar", "HNL - Honduran Lempira", "HRK - Croatian Kuna", "HTG - Haitian Gourde", "HUF - Hungarian Forint", "IDR - Indonesian Rupiah", "ILS - Israeli New Shekel", "INR - Indian Rupee", "ISK - Icelandic Króna", "JMD - Jamaican Dollar", "JPY - Japanese Yen", "KES - Kenyan Shilling", "KGS - Kyrgystani Som", "KHR - Cambodian Riel", "KMF - Comorian Franc", "KRW - South Korean Won", "KYD - Cayman Islands Dollar", "KZT - Kazakhstani Tenge", "LAK - Laotian Kip", "LBP - Lebanese Pound", "LKR - Sri Lankan Rupee", "LRD - Liberian Dollar", "LSL - Lesotho Loti", "MAD - Moroccan Dirham", "MDL - Moldovan Leu", "MGA - Malagasy Ariary", "MKD - Macedonian Denar", "MMK - Myanmar Kyat", "MNT - Mongolian Tugrik", "MOP - Macanese Pataca", "MRO - Mauritanian Ouguiya (1973–2017)", "MUR - Mauritian Rupee", "MVR - Maldivian Rufiyaa", "MWK - Malawian Kwacha", "MXN - Mexican Peso", "MYR - Malaysian Ringgit", "MZN - Mozambican Metical", "NAD - Namibian Dollar", "NGN - Nigerian Naira", "NIO - Nicaraguan Córdoba", "NOK - Norwegian Krone", "NPR - Nepalese Rupee", "NZD - New Zealand Dollar", "PAB - Panamanian Balboa", "PEN - Peruvian Sol", "PGK - Papua New Guinean Kina", "PHP - Philippine Piso", "PKR - Pakistani Rupee", "PLN - Polish Zloty", "PYG - Paraguayan Guarani", "QAR - Qatari Rial", "RON - Romanian Leu", "RSD - Serbian Dinar", "RUB - Russian Ruble", "RWF - Rwandan Franc", "SAR - Saudi Riyal", "SBD - Solomon Islands Dollar", "SCR - Seychellois Rupee", "SEK - Swedish Krona", "SGD - Singapore Dollar", "SHP - St. Helena Pound", "SLL - Sierra Leonean Leone", "SOS - Somali Shilling", "SRD - Surinamese Dollar", "STD - São Tomé & Príncipe Dobra (1977–2017)", "SZL - Swazi Lilangeni", "THB - Thai Baht", "TJS - Tajikistani Somoni", "TOP - Tongan Paʻanga", "TRY - Turkish Lira", "TTD - Trinidad & Tobago Dollar", "TWD - New Taiwan Dollar", "TZS - Tanzanian Shilling", "UAH - Ukrainian Hryvnia", "UGX - Ugandan Shilling", "UYU - Uruguayan Peso", "UZS - Uzbekistani Som", "VND - Vietnamese Dong", "VUV - Vanuatu Vatu", "WST - Samoan Tala", "XAF - Central African CFA Franc", "XCD - East Caribbean Dollar", "XOF - West African CFA Franc", "XPF - CFP Franc", "YER - Yemeni Rial", "ZAR - South African Rand", "ZMW - Zambian Kwacha"]
+
 
 
   var oneTime, multiTime;
-  fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/onetime1value.json').then(response => response.json()).then(data => oneTime=data).catch(console.error);
+  fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/onetime1value.json').then(response => response.json()).then(data => oneTime = data).catch(console.error);
 
-  fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/multitime1value.json').then(response => response.json()).then(data => multiTime=data).catch(console.error);
+  fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/fawazahmed0.github.io-file-hosting@master/stripe/multitime1value.json').then(response => response.json()).then(data => multiTime = data).catch(console.error);
 
-  var stripe, mymsg, sharelink, smallsharetext, largesharetext,sharebtnmsg,nodonatebtn;
+  var stripe, mymsg, sharelink, smallsharetext, largesharetext, sharebtnmsg, nodonatebtn;
 
 
 
-function ready() {
+  function ready() {
 
-  
 
-  for(let curr of currencyArray){
 
-    $('#currencyliststripe').append('<option value="'+curr.substring(0, 3)+'">'+curr+'</option>')
+    for (let curr of currencyArray) {
 
-    if(paypalCurrency.includes(curr.substring(0, 3)))
-    $('#currencylistpaypal').append('<option value="'+curr.substring(0, 3)+'">'+curr+'</option>')
-  }
+      $('#currencyliststripe').append('<option value="' + curr.substring(0, 3) + '">' + curr + '</option>')
 
-  
+      if (paypalCurrency.includes(curr.substring(0, 3)))
+        $('#currencylistpaypal').append('<option value="' + curr.substring(0, 3) + '">' + curr + '</option>')
+    }
 
-  var currenturl = new URL(window.location)
-  var urlparams = currenturl.searchParams;
+
+
+    var currenturl = new URL(window.location)
+    var urlparams = currenturl.searchParams;
 
     // Default message on page
-   mymsg = `This is Fawaz Ahmed (fawazahmed0), I have done many open source projects as part of my religion, because God says:<br><br>
+    mymsg = `This is Fawaz Ahmed (fawazahmed0), I have done many open source projects as part of my religion, because God says:<br><br>
   <b><em>Help each other in goodness and piety, but do not cooperate in wrong and hurting others. And fear God, Truly, God is severe in punishment - Quran 5:2</em><br><br></b>
    If you like my work consider donating a few bucks to me.`
 
-   sharelink = urlparams.get('sharelink') || ""
-   smallsharetext = urlparams.get('smallsharetext') || ""
-   largesharetext = urlparams.get('largesharetext') || ""
-   sharebtnmsg = urlparams.get('sharebtnmsg') || "Share it with your friends"
-   nodonatebtn = urlparams.get('nodonatebtn') || ""
-  // If parameter is null then use the above default message
-  mymsg = urlparams.get('mymsg') || mymsg
+    sharelink = urlparams.get('sharelink') || ""
+    smallsharetext = urlparams.get('smallsharetext') || ""
+    largesharetext = urlparams.get('largesharetext') || ""
+    sharebtnmsg = urlparams.get('sharebtnmsg') || "Share it with your friends"
+    nodonatebtn = urlparams.get('nodonatebtn') || ""
+    // If parameter is null then use the above default message
+    mymsg = urlparams.get('mymsg') || mymsg
 
-  sharelink = encodeURIComponent(sharelink)
+    sharelink = encodeURIComponent(sharelink)
 
-  smallsharetext = encodeURIComponent(smallsharetext)
+    smallsharetext = encodeURIComponent(smallsharetext)
 
-  largesharetext = encodeURIComponent(largesharetext)
+    largesharetext = encodeURIComponent(largesharetext)
 
 
-window.successURL = 'https://fawazahmed0.github.io/donate.html?mymsg='+encodeURIComponent(successmsg)+'&sharelink='+sharelink+'&smallsharetext='+smallsharetext+'&largesharetext='+largesharetext+'&sharebtnmsg='+encodeURIComponent(sharebtnmsg)
-window.cancelURL = 'https://fawazahmed0.github.io/donate.html?mymsg='+encodeURIComponent(cancelmsg)+'&sharelink='+sharelink+'&smallsharetext='+smallsharetext+'&largesharetext='+largesharetext+'&sharebtnmsg='+encodeURIComponent(sharebtnmsg)
-// Add message on the page
-$('#mymsg').html(mymsg)
+    window.successURL = 'https://fawazahmed0.github.io/donate.html?mymsg=' + encodeURIComponent(successmsg) + '&sharelink=' + sharelink + '&smallsharetext=' + smallsharetext + '&largesharetext=' + largesharetext + '&sharebtnmsg=' + encodeURIComponent(sharebtnmsg)
+    window.cancelURL = 'https://fawazahmed0.github.io/donate.html?mymsg=' + encodeURIComponent(cancelmsg) + '&sharelink=' + sharelink + '&smallsharetext=' + smallsharetext + '&largesharetext=' + largesharetext + '&sharebtnmsg=' + encodeURIComponent(sharebtnmsg)
+    // Add message on the page
+    $('#mymsg').html(mymsg)
 
-  stripe = Stripe('pk_live_2iSPDOnC126d0dnNPfESsaTk007wld2uGp');
+    stripe = Stripe('pk_live_2iSPDOnC126d0dnNPfESsaTk007wld2uGp');
 
-// Clipboard js
-// https://github.com/zenorocha/clipboard.js
-// QR code generator
-// https://github.com/davidshimjs/qrcodejs
+    // Clipboard js
+    // https://github.com/zenorocha/clipboard.js
+    // QR code generator
+    // https://github.com/davidshimjs/qrcodejs
 
-// Hide share button content when donate button is clicked
-$('#donatediv').on('show.bs.collapse', function () {
-  $('#sharediv').collapse('hide')
+    // Hide share button content when donate button is clicked
+    $('#donatediv').on('show.bs.collapse', function () {
+      $('#sharediv').collapse('hide')
 
-})
-// Hide donate button content when share button is clicked
-$('#sharediv').on('show.bs.collapse', function () {
-  $('#donatediv').collapse('hide')
-})
-// Generating QR and adding to element by id
-new QRCode(document.getElementById("upiqr"), "upi://pay?pa=fawazahmed95@okicici&pn=Fawaz%20Ahmed");
+    })
+    // Hide donate button content when share button is clicked
+    $('#sharediv').on('show.bs.collapse', function () {
+      $('#donatediv').collapse('hide')
+    })
+    // Generating QR and adding to element by id
+    new QRCode(document.getElementById("upiqr"), "upi://pay?pa=fawazahmed95@okicici&pn=Fawaz%20Ahmed");
 
-new QRCode(document.getElementById("btcqr"), $('#btcaddress').text().trim());
+    new QRCode(document.getElementById("btcqr"), $('#btcaddress').text().trim());
 
-new QRCode(document.getElementById("etherqr"), $('#etheraddress').text().trim());
+    new QRCode(document.getElementById("etherqr"), $('#etheraddress').text().trim());
 
-new QRCode(document.getElementById("tetherqr"), $('#tetheraddress').text().trim());
+    new QRCode(document.getElementById("tetherqr"), $('#tetheraddress').text().trim());
 
-new QRCode(document.getElementById("rippleqr"), $('#rippleaddress').text().trim());
+    new QRCode(document.getElementById("rippleqr"), $('#rippleaddress').text().trim());
 
-// Tooltip initialization
- $('[data-toggle="tooltip"]').tooltip({
- trigger:'click',
- title: 'Copied!',
- placement: 'auto'
- });
-
- // After the tooltip is shown, hide it
- $('[data-toggle="tooltip"]').on('shown.bs.tooltip', function () {
- $(this).tooltip('hide')
-})
-
-
-
-// Empty the previous textarea value in issue when show event is fired
- $('#issue').on('show.bs.collapse', function () {
-  $('#issuetext').val('')
-})
-
- // Adding clipboard functionality to all button with copybtn class
-new ClipboardJS('.copybtn');
-
-
-var mobile=ismobile()
-
-
-if(sharelink != ""){
-
-// Share button message
-$('#sharebtnmsg').html(sharebtnmsg)
-
-// Attaching the buttons using javascript, so in future just have to change the above variables
-$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" href="https://www.facebook.com/sharer/sharer.php?u='+sharelink+'&quote='+largesharetext+'" target="_blank" type="button">Facebook</a>' );
-
-$( "#sharediv" ).append( '<a class="btn btn-success mb-1" id="whatsappbtn" href="https://web.whatsapp.com/send?text='+largesharetext+'%20'+sharelink+'" target="_blank" type="button">WhatsApp</a>' );
-
-$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" href="https://twitter.com/intent/tweet?text='+largesharetext+'%3A%20'+sharelink+'" target="_blank" type="button">Twitter</a>' );
-
-$( "#sharediv" ).append( '<a class="btn btn-warning mb-1" href="mailto:?subject='+smallsharetext+'&body='+largesharetext+'%20'+sharelink+'" target="_blank" type="button">Email</a>' );
-
-$( "#sharediv" ).append( '<a class="btn btn-primary mb-1" id="telegrambtn" href="https://t.me/share/url?url='+sharelink+'&text='+largesharetext+'" target="_blank" type="button">Telegram</a>' );
-
-$( "#sharediv" ).append( '<a class="btn btn-danger mb-1" href="https://www.reddit.com/submit?url='+sharelink+'&title='+largesharetext+'" target="_blank" type="button">Reddit</a>' );
-
-$( "#sharediv" ).append( '<a class="btn btn-warning mb-1" id="weibobtn" href="http://service.weibo.com/share/share.php?url='+sharelink+'&appkey=&title='+largesharetext+'" target="_blank" type="button">Weibo</a>' );
-
-$( "#sharediv" ).append( '<a class="btn btn-dark mb-1" href="http://www.tumblr.com/share/link?url='+sharelink+'" target="_blank" type="button">Tumblr</a>' );
-
-
-if(mobile){
-$('#whatsappbtn').attr("href","whatsapp://send?text="+largesharetext+"%20"+sharelink)
-
- $('#telegrambtn').attr("href","tg://msg?url="+sharelink+"&text="+largesharetext)
-
- $('#weibobtn').remove()
-
-
-}
-
-}
-else{
-// Hide share button if no shareurl present
-$('#sharebtn').hide()
-
-}
-
-// Hide Donate button if nodonatebtn has any value in it
-if(nodonatebtn != "")
-$('#donatebtn').hide()
-
-// $('#mymsg').text(mymsg)
-
-
-
-
-
-// Logs any error in console.everything
-//  https://stackoverflow.com/questions/19846078/how-to-read-from-chromes-console-in-javascript
-
-
-
-setPaypalButtons()
-
- // Add searchable select
- $('select').select2({
-    theme: 'bootstrap4',
-  });
-
-
-}
-
-function setPaypalButtons(){
- let paypalScriptURL =  document.querySelector('#paypalscript').src
-
-
- paypalScriptURL= new URL(paypalScriptURL);
-let params = new URLSearchParams(paypalScriptURL.search);
-
-//Add a third parameter.
-params.set('currency',  $('#currencylistpaypal').val().trim());
-
-document.querySelector('#paypalscript').src = paypalScriptURL.href.replace(paypalScriptURL.search,'') + '?'+params.toString()
-
- document.querySelector('#paypal-button-container').innerHTML = ''
-
-
- paypal.Buttons({
-
-onInit: function(data, actions)  {
-  window.paypalBtnAction = actions
-  if(!document.querySelector('#paypalform').checkValidity())
-  actions.disable()
-},
-onClick: function(data, actions)  {
-
-  document.querySelector('#paypalform').reportValidity()
-
-},
-  createOrder: function(data, actions) {
-    return actions.order.create({
-      purchase_units: [{
-        amount: {
-         
-          value: document.querySelector('#amtpaypal').value.trim()
-        }
-      }]
+    // Tooltip initialization
+    $('[data-toggle="tooltip"]').tooltip({
+      trigger: 'click',
+      title: 'Copied!',
+      placement: 'auto'
     });
-  },
-  onApprove: function(data, actions) {
-    window.location.href = successURL;
-},
-onError: function (err) {
-  // For example, redirect to a specific error page
-  window.location.href = cancelURL
-}
-}).render('#paypal-button-container'); // Display payment options on your web page
+
+    // After the tooltip is shown, hide it
+    $('[data-toggle="tooltip"]').on('shown.bs.tooltip', function () {
+      $(this).tooltip('hide')
+    })
 
 
-}
+
+    // Empty the previous textarea value in issue when show event is fired
+    $('#issue').on('show.bs.collapse', function () {
+      $('#issuetext').val('')
+    })
+
+    // Adding clipboard functionality to all button with copybtn class
+    new ClipboardJS('.copybtn');
 
 
-function checkAndEnableBtn(){
-  
-  if(document.querySelector('#paypalform').checkValidity()){
-    
-  paypalBtnAction.enable()
+    var mobile = ismobile()
+
+
+    if (sharelink != "") {
+
+      // Share button message
+      $('#sharebtnmsg').html(sharebtnmsg)
+
+      // Attaching the buttons using javascript, so in future just have to change the above variables
+      $("#sharediv").append('<a class="btn btn-primary mb-1" href="https://www.facebook.com/sharer/sharer.php?u=' + sharelink + '&quote=' + largesharetext + '" target="_blank" type="button">Facebook</a>');
+
+      $("#sharediv").append('<a class="btn btn-success mb-1" id="whatsappbtn" href="https://web.whatsapp.com/send?text=' + largesharetext + '%20' + sharelink + '" target="_blank" type="button">WhatsApp</a>');
+
+      $("#sharediv").append('<a class="btn btn-primary mb-1" href="https://twitter.com/intent/tweet?text=' + largesharetext + '%3A%20' + sharelink + '" target="_blank" type="button">Twitter</a>');
+
+      $("#sharediv").append('<a class="btn btn-warning mb-1" href="mailto:?subject=' + smallsharetext + '&body=' + largesharetext + '%20' + sharelink + '" target="_blank" type="button">Email</a>');
+
+      $("#sharediv").append('<a class="btn btn-primary mb-1" id="telegrambtn" href="https://t.me/share/url?url=' + sharelink + '&text=' + largesharetext + '" target="_blank" type="button">Telegram</a>');
+
+      $("#sharediv").append('<a class="btn btn-danger mb-1" href="https://www.reddit.com/submit?url=' + sharelink + '&title=' + largesharetext + '" target="_blank" type="button">Reddit</a>');
+
+      $("#sharediv").append('<a class="btn btn-warning mb-1" id="weibobtn" href="http://service.weibo.com/share/share.php?url=' + sharelink + '&appkey=&title=' + largesharetext + '" target="_blank" type="button">Weibo</a>');
+
+      $("#sharediv").append('<a class="btn btn-dark mb-1" href="http://www.tumblr.com/share/link?url=' + sharelink + '" target="_blank" type="button">Tumblr</a>');
+
+
+      if (mobile) {
+        $('#whatsappbtn').attr("href", "whatsapp://send?text=" + largesharetext + "%20" + sharelink)
+
+        $('#telegrambtn').attr("href", "tg://msg?url=" + sharelink + "&text=" + largesharetext)
+
+        $('#weibobtn').remove()
+
+
+      }
+
+    }
+    else {
+      // Hide share button if no shareurl present
+      $('#sharebtn').hide()
+
+    }
+
+    // Hide Donate button if nodonatebtn has any value in it
+    if (nodonatebtn != "")
+      $('#donatebtn').hide()
+
+    // $('#mymsg').text(mymsg)
+
+
+
+
+
+    // Logs any error in console.everything
+    //  https://stackoverflow.com/questions/19846078/how-to-read-from-chromes-console-in-javascript
+
+
+
+    setPaypalButtons()
+
+    // Add searchable select
+    $('select').select2({
+      theme: 'bootstrap4',
+    });
+
+
   }
+
+  function setPaypalButtons() {
+    let paypalScriptURL = document.querySelector('#paypalscript').src
+
+
+    paypalScriptURL = new URL(paypalScriptURL);
+    let params = new URLSearchParams(paypalScriptURL.search);
+
+    //Add a third parameter.
+    params.set('currency', $('#currencylistpaypal').val().trim());
+
+    document.querySelector('#paypalscript').src = paypalScriptURL.href.replace(paypalScriptURL.search, '') + '?' + params.toString()
+
+    document.querySelector('#paypal-button-container').innerHTML = ''
+
+
+    paypal.Buttons({
+
+      onInit: function (data, actions) {
+        window.paypalBtnAction = actions
+        if (!document.querySelector('#paypalform').checkValidity())
+          actions.disable()
+      },
+      onClick: function (data, actions) {
+
+        document.querySelector('#paypalform').reportValidity()
+
+      },
+      createOrder: function (data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+
+              value: document.querySelector('#amtpaypal').value.trim()
+            }
+          }]
+        });
+      },
+      onApprove: function (data, actions) {
+        window.location.href = successURL;
+      },
+      onError: function (err) {
+        // For example, redirect to a specific error page
+        window.location.href = cancelURL
+      }
+    }).render('#paypal-button-container'); // Display payment options on your web page
+
+
+  }
+
+
+  function checkAndEnableBtn() {
+
+    if (document.querySelector('#paypalform').checkValidity()) {
+
+      paypalBtnAction.enable()
+    }
     else
-    paypalBtnAction.disable()
+      paypalBtnAction.disable()
 
-    
-}
 
-document.addEventListener("DOMContentLoaded", ready);
+  }
+
+  document.addEventListener("DOMContentLoaded", ready);
 
 
 
 </script>
-
-
-
-
-
