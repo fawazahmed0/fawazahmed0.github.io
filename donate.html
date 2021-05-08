@@ -521,16 +521,14 @@ Could you retry to donate or consider sharing my work with friends and that woul
           return actions.order.create({
             purchase_units: [{
               amount: {
-                value: '67'
+                value: document.querySelector('#amtpaypal').value.trim()
               }
             }]
           });
         },
-        onApprove: function(data, actions) {
-          return actions.order.capture().then(function(details) {
-            alert('Transaction completed by ' + details.payer.name.given_name);
-          });
-        }
+        onApprove: function (data, actions) {
+        window.location.href = successURL;
+      }
       }).render('#paypal-button-container'); // Display payment options on your web page
 
 
