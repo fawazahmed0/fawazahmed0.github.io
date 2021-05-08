@@ -503,16 +503,15 @@ Could you retry to donate or consider sharing my work with friends and that woul
   }
 
   function setPaypalButtons() {
+    // Get paypal script url, we need to add currency parameter based on user selected currency
     let paypalScriptURL = document.querySelector('#paypalscript').src
-
     paypalScriptURL = new URL(paypalScriptURL);
+    
     let params = new URLSearchParams(paypalScriptURL.search);
-
-
     params.set('currency', $('#currencylistpaypal').val().trim());
-
     document.querySelector('#paypalscript').src = paypalScriptURL.href.replace(paypalScriptURL.search, '') + '?' + params.toString()
 
+    // Empty any old paypal button based on old selected currency
     document.querySelector('#paypal-button-container').innerHTML = ''
 
 
