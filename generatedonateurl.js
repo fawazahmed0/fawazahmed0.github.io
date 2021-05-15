@@ -46,6 +46,7 @@ vittorio noca<br>
 Manuel De Diego Prato<br>
 Justin Kennedy<br>
 Bo Pedersen<br>
+Denis Petrushkin<br>
 
 `
 
