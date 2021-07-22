@@ -26,7 +26,7 @@ var sharebtnmsg = "Share the Latest adb fastboot drivers installer tool with fri
 
 // Message to show on page
 var mymsg = `You can help support this tool by as little as $3, because this tool needs regular maintenance to support all the different android devices.<br><br>
-I also would like to thank all the Supporters who have helped in maintenance of this tool:<br><br>
+I would like to thank all the Supporters who have helped in maintenance of this tool:<br><br>
 Mickael Catherine<br>
 Christopher Vaughan<br>
 Nuno Pinho<br>
