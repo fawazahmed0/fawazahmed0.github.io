@@ -25,8 +25,8 @@ var largesharetext = "Free Currency Exchange Rates API with 150+ Currencies & No
 var sharebtnmsg = "Share the Free Currency Rates API"
 
 // Message to show on page
-var mymsg = `You can help support this Service by as little as $3 🙂, because this Service needs regular maintenance to keep it running. 
-
+var mymsg = `You can help support this Service by as little as $3 🙂, because this Service needs regular maintenance to keep it running.<br><br>
+Thank you for considering to support this Service.
 `
 
 
