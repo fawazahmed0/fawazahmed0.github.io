@@ -1,5 +1,5 @@
 ---
-title: Donate/Share
+title: Support/Share
 layout: simple
 ---
 
@@ -95,7 +95,7 @@ layout: simple
 
       <a class="btn btn-primary btn-lg mx-3" id="donatebtn" data-toggle="collapse" href="#donatediv" role="button"
         aria-expanded="false" aria-controls="donatediv">
-        &#10084; Donate($3 or more)
+        &#10084; Support
       </a>
 
       <a class="btn btn-primary btn-lg mx-3 mb-1" id="sharebtn" data-toggle="collapse" href="#sharediv" role="button"
@@ -181,7 +181,7 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
                         placeholder="Enter Amount" required>
                     </div>
                     <div class="col-3 border-0">
-                      <button type="submit" id='stripebtn' class="btn btn-primary">Donate</button>
+                      <button type="submit" id='stripebtn' class="btn btn-primary">Support</button>
                     </div>
 
                   </div>
@@ -433,11 +433,10 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
     }
   }
 
-  var successmsg = `Thank you for donating,<br><br>
-I appreciate that you have donated to me and I would like to thank you for that,  could you also share my work with friends.<br><br>
-That would be very helpful`
-  var cancelmsg = `It looks like there was an error while donating<br><br>
-Could you retry to donate or consider sharing my work with friends and that would be very helpful`
+  var successmsg = `Thank you for Supporting,<br><br>
+I appreciate that you have supported the open source work and I would really like to thank you for that.`
+  var cancelmsg = `It looks like there was an error while payment<br><br>
+Could you retry or consider sharing my work with friends and that would also be very helpful`
 
 
   function striperun() {
@@ -604,9 +603,7 @@ Could you retry to donate or consider sharing my work with friends and that woul
     var urlparams = currenturl.searchParams;
 
     // Default message on page
-    mymsg = `This is Fawaz Ahmed (fawazahmed0), I have done many open source projects as part of my religion, because God says:<br><br>
-  <b><em>Help each other in goodness and piety, but do not cooperate in wrong and hurting others. And fear God, Truly, God is severe in punishment - Quran 5:2</em><br><br></b>
-   If you like my work, consider donating $3 or more to me.`
+    mymsg = `You can help support open source work by as little as $3, because it needs regular maintenance.<br><br>`
 
     sharelink = urlparams.get('sharelink') || ""
     smallsharetext = urlparams.get('smallsharetext') || ""
