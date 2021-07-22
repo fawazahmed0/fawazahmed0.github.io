@@ -25,11 +25,8 @@ var largesharetext = "Check this out, this tool makes the Android usb drivers in
 var sharebtnmsg = "Share the Latest adb fastboot drivers installer tool with friends"
 
 // Message to show on page
-var mymsg = `Thanks for using my tool, I am Fawaz Ahmed (fawazahmed0) developer of this tool. I made this tool, so that people new to Android rooting, TWRP flashing etc, don’t have to waste time.<br><br>
-This tool will detect and install drivers specific to your phone, so you wouldn’t face any issue. I try to keep this tool up to date.
-I have spent so much time testing this tool in different windows versions, so you don’t have to face any problem.<br><br>
-If you like my work consider donating($3 or more) or at least share this tool with friends so they don’t have to waste time<br><br>
-I would like to thank all the Supporters who have donated $3 or more to this tool:<br><br>
+var mymsg = `You can help support this tool by as little as $3, because this tool needs regular maintenance to support all the different android devices.<br><br>
+I also would like to thank all the Supporters who have helped in maintenance of this tool:<br><br>
 Mickael Catherine<br>
 Christopher Vaughan<br>
 Nuno Pinho<br>
