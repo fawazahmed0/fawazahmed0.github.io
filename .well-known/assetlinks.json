@@ -7,6 +7,7 @@
  {
         "relation": ["delegate_permission/common.handle_all_urls"],
         "target" : { "namespace": "android_app", "package_name": "io.github.fawazahmed0.twa.LastThirdNightCalc",
-                     "sha256_cert_fingerprints": ["AB:8E:E4:1A:C3:C1:E7:A7:85:7F:F3:E6:05:97:CB:94:DB:09:16:E1:75:2E:95:92:8A:36:DC:58:2E:12:22:43"] }
+                     "sha256_cert_fingerprints": ["AB:8E:E4:1A:C3:C1:E7:A7:85:7F:F3:E6:05:97:CB:94:DB:09:16:E1:75:2E:95:92:8A:36:DC:58:2E:12:22:43",
+                                                 "FD:8D:02:48:69:0F:80:EA:D6:57:42:A1:AE:1A:8D:7C:7F:50:6E:D3:CC:A5:FB:97:1A:E2:DE:31:0F:4E:3B:AD"] }
       }
 ]
