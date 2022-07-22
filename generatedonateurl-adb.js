@@ -25,8 +25,7 @@ var largesharetext = "Check this out, this tool makes the Android usb drivers in
 var sharebtnmsg = "Share the Latest adb fastboot drivers installer tool with friends"
 
 // Message to show on page
-var mymsg = `If you like my work, please consider donating<br><br>
-Thank you for considering to support my open source work.<br><br>
+var mymsg = `<br><br>If you like my work, please consider donating<br><br>
 I would like to thank all the Supporters who have donated:<br><br>
 Christopher Caldwell<br>
 Roy Rubin<br>
