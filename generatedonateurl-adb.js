@@ -26,7 +26,7 @@ var sharebtnmsg = "Share the Latest adb fastboot drivers installer tool with fri
 
 // Message to show on page
 var mymsg = `If you like my work, please consider donating<br><br>
-Thank you for considering to support the open source work.<br><br>
+Thank you for considering to support my open source work.<br><br>
 I would like to thank all the Supporters who have donated:<br><br>
 Christopher Caldwell<br>
 Roy Rubin<br>
