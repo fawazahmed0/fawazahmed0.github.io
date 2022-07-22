@@ -33,25 +33,7 @@ Holger Banzhaf<br>
 Alexey Makarov<br>
 Romy Adiputra<br>
 Mickael Catherine<br>
-Christopher Vaughan<br>
-Nuno Pinho<br>
-Robert Edwards<br>
-Antonio Gobbin<br>
-Hamza E.<br>
-None<br>
-Edivaldo A Pereira<br>
-Wallace G. Sanders<br>
-Peter Bergonzi<br>
-Áron Somodi<br>
-Antonio Banders<br>
-vittorio noca<br>
-Manuel De Diego Prato<br>
-Justin Kennedy<br>
-Bo Pedersen<br>
-Denis Petrushkin<br>
-Justine Kira<br>
-Lury Williams<br>
-Fernando Toribio<br>
+<a href="https://github.com/fawazahmed0/Latest-adb-fastboot-installer-for-windows/blob/master/DONOR.md">Old Donors</a>
 
 `
 
