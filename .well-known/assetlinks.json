@@ -9,5 +9,18 @@
         "target" : { "namespace": "android_app", "package_name": "io.github.fawazahmed0.twa.LastThirdNightCalc",
                      "sha256_cert_fingerprints": ["AB:8E:E4:1A:C3:C1:E7:A7:85:7F:F3:E6:05:97:CB:94:DB:09:16:E1:75:2E:95:92:8A:36:DC:58:2E:12:22:43",
                                                  "FD:8D:02:48:69:0F:80:EA:D6:57:42:A1:AE:1A:8D:7C:7F:50:6E:D3:CC:A5:FB:97:1A:E2:DE:31:0F:4E:3B:AD"] }
+      },
+ {
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "io.github.fawazahmed0.twa.hadiths",
+                     "sha256_cert_fingerprints": ["9E:F5:AC:E2:C5:5B:85:57:1C:72:C7:60:16:18:84:8F:6C:ED:AB:6B:67:05:E5:D1:C0:63:8B:31:D9:C6:A6:5C",
+                                                 "D7:C4:71:CB:C4:37:BA:CD:58:7B:2E:68:39:7E:44:27:9B:06:4A:25:D2:78:7C:AB:37:51:9E:BC:27:B7:FC:58"] }
+      },
+ {
+        "relation": ["delegate_permission/common.handle_all_urls"],
+        "target" : { "namespace": "android_app", "package_name": "io.github.fawazahmed0.twa.askgod",
+                     "sha256_cert_fingerprints": ["A0:9C:6C:D0:7F:49:BF:9A:0D:4B:33:5B:59:EE:38:32:8D:D7:71:2F:96:9D:B3:E4:1A:A4:8F:42:3F:AA:F1:4C",
+                                                 "23:5A:AC:C0:05:55:D0:14:86:7F:30:A6:92:02:B7:D3:A8:86:86:FB:E7:BF:D7:7E:F3:D3:EC:71:FB:89:73:49"] }
       }
+ 
 ]
