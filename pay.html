@@ -91,13 +91,9 @@ layout: simple
 
       <a class="btn btn-primary btn-lg mx-3" id="donatebtn" data-toggle="collapse" href="#donatediv" role="button"
         aria-expanded="false" aria-controls="donatediv">
-        &#10084; Support
+        Pay
       </a>
 
-      <a class="btn btn-primary btn-lg mx-3 mb-1" id="sharebtn" data-toggle="collapse" href="#sharediv" role="button"
-        aria-expanded="false" aria-controls="sharediv">
-        &#10150; Share
-      </a>
 
 
       <!--html entities unicode symbols https://www.toptal.com/designers/htmlarrows/symbols/
@@ -429,10 +425,8 @@ For unicode U+1F603 convert it into html entity by &#x1F603; i.e prepend by &#x 
     }
   }
 
-  var successmsg = `Thank you for Supporting,<br><br>
-I appreciate that you have supported the open source work and I would really like to thank you for that.`
-  var cancelmsg = `It looks like there was an error while payment<br><br>
-Could you retry or consider sharing my work with friends and that would also be very helpful`
+  var successmsg = `Payment is complete`
+  var cancelmsg = `There was an error during payment`
 
 
   function striperun() {
@@ -599,10 +593,7 @@ Could you retry or consider sharing my work with friends and that would also be 
     var urlparams = currenturl.searchParams;
 
     // Default message on page
-    mymsg = `<br><br>This is Fawaz Ahmed (fawazahmed0), I have done many open source projects<br><br>
-    If you like my work consider donating.<br><br>
-    Thank you for considering to support my open source work.
-    `
+    mymsg = ``
 
     sharelink = urlparams.get('sharelink') || ""
     smallsharetext = urlparams.get('smallsharetext') || ""
