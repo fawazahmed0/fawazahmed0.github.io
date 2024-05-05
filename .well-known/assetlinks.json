@@ -29,6 +29,14 @@
         "target" : { "namespace": "android_app", "package_name": "io.github.fawazahmed0.twa.askgod",
                      "sha256_cert_fingerprints": ["A0:9C:6C:D0:7F:49:BF:9A:0D:4B:33:5B:59:EE:38:32:8D:D7:71:2F:96:9D:B3:E4:1A:A4:8F:42:3F:AA:F1:4C",
                                                  "23:5A:AC:C0:05:55:D0:14:86:7F:30:A6:92:02:B7:D3:A8:86:86:FB:E7:BF:D7:7E:F3:D3:EC:71:FB:89:73:49"] }
+      },
+        {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.fawazahmed0.twa.LastThirdNightCalc",
+        "sha256_cert_fingerprints": ["81:BE:CC:E4:2F:86:36:A1:8E:93:E4:15:BA:71:C4:03:5C:C9:DB:16:F9:DB:2B:54:2A:00:4F:B6:6B:93:53:4E"]
       }
+    }
  
 ]
